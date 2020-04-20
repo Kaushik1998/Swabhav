@@ -1,29 +1,29 @@
 class SplitTest{
 	String url;
-	String domain[];
+	String data[];
 	String getDomain(String url) {
 		this.url=url;
-		domain=url.split("\\.");
-		if (domain[1].length()==0)
+		data=url.split("\\.");
+		if (data[1].length()==0)
 		{
 		return "NULL";
 		}
 		else
 		{
-		return domain[1];
+		return data[1];
 		}
 	}
 	
 	String getDeveloper(String url) {
 		this.url=url;
-		domain=url.split("\\=");
-		if (domain[1].length()==0)
+		data=url.split("\\=");
+		if (url.indexOf("=")==url.length()-1)
 		{
 		return "NULL";
 		}
 		else
 		{
-		return domain[1];
+		return data[1];
 		}
 	}	
 }
@@ -31,26 +31,44 @@ class SplitTest{
 
 class SubstringTest{
 	String url;
-	String domain[];
+	String domain;
+	String developer;
 	
 	String getDomain(String url){
 		this.url=url;
+
 		int startIndex = url.indexOf("www.")+4;
         int endIndex = url.indexOf(".com");
-        return url.substring(startIndex,endIndex);
+        domain = url.substring(startIndex,endIndex);
+        if(domain.length()==0)
+        {
+        	return "NULL";
+        }
+        else
+        {
+        	return domain;
+        }
 	}
 	
 	String getDeveloper(String url){
 		this.url=url;
 		int startIndex = url.indexOf("=")+1;
         int endIndex = url.length();
-        return url.substring(startIndex,endIndex);
+        developer = url.substring(startIndex,endIndex);
+        if(developer.length()==0)
+        {
+        	return "NULL";
+        }
+        else
+        {
+        	return developer;
+        }
 	}
 }
 class Url{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String url = "https://www.swabhavtechlabs.com?developer=Kaushik";
+		String url = "https://www.swabhavtechlabs.com?developer=";
 		String domain[];
 		domain=url.split("\\.");	
 		System.out.println("SplitTest");
@@ -62,7 +80,7 @@ class Url{
 		System.out.println("----------------------------------------------");	
 		System.out.println("SubstringTest");
 		SubstringTest sbt = new SubstringTest();
-		System.out.println("----------------------------------------------");	
+		System.out.println("----------------------------------------------");
 		System.out.println("Domain is " + sbt.getDomain(url));
 		System.out.println("----------------------------------------------");		
 		System.out.println("Developer is " + sbt.getDeveloper(url));
