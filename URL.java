@@ -68,7 +68,9 @@ class SubstringTest{
 class Url{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String url = "https://www.swabhavtechlabs.com?developer=";
+		/*
+		*/ 
+		String url = "https://www.google.com?developer=";
 		String domain[];
 		domain=url.split("\\.");	
 		System.out.println("SplitTest");
