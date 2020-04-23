@@ -33,7 +33,6 @@ public class MenuDrivenGameTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner s = new Scanner(System.in);
-	    String ANSI_CLEAR_SEQ = "\u001b[2J";
 	    boolean flag = true;
 
 		System.out.println(" 1. Start Game \n 2. Restart the game \n 3. Exit");
@@ -46,6 +45,7 @@ public class MenuDrivenGameTest {
 				pg.game();
 				break;
 			case 2: 
+				System.out.println("Would you like to play again ?");
 				System. out. print("\033[H\033[2J");
 				System. out. flush();
 			    pg.game();
