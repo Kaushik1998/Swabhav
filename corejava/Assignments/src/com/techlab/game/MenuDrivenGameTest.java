@@ -8,7 +8,7 @@ class PlayGame {
 		Random r = new Random();
 		Scanner sc = new Scanner(System.in);
 		int random = r.nextInt(10);
-		int choice = 99;
+		int choice;
 		System.out.println("Enter a number between 0 - 9");
 		while (true) {
 			choice = sc.nextInt();

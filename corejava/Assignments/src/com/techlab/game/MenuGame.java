@@ -8,7 +8,10 @@ class PlayGame2 {
 		Random r = new Random();
 		Scanner sc = new Scanner(System.in);
 		int random = r.nextInt(10);
-		int choice = 99;
+		final int START_GAME = 1;
+		final int RESTART_GAME = 2;
+		final int END_GAME = 3;
+		
 		System.out.println("Enter a number between 0 - 9");
 		while (true) {
 			choice = sc.nextInt();
@@ -37,7 +40,7 @@ public class MenuGame {
 		boolean flag = true;
 		System.out.println(" 1. Start Game \n 2. Exit");
 		int ch = s.nextInt();
-		PlayGame pg = new PlayGame2();
+		PlayGame2 pg = new PlayGame2();
 		if (ch == 1) {
 			do {
 				pg.game();
