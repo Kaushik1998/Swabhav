@@ -13,7 +13,8 @@ class EvenOddCheck{
 			return false;
 		}
 	}
-	
+	// to use dynamic length for input
+	// i get erros with normal aray
 }
 public class EvenOddTest {
 

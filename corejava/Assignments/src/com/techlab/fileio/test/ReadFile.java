@@ -9,11 +9,20 @@ class CheckContent {
 	String getFlag(String data) {
 		String flag[] = data.split(" - ");
 		return flag[1];
+		// to get INFO ,ERROR , Warning flag 
+		//No its PArt of checkcontent
+		// i was going for modular approach
+		//OK
+		//Absolute 
+		//Yes he will have error
+		//FileNotFound
+		//OK
+		//I couldnt do the Case 2nd 
 	}
 
 }
 
-public class ReadFileTest {
+public class ReadFile {
 
 	public static void main(String[] args) {
 		final String iParameter = "-i", eParameter = "-e", wParameter = "-w";
@@ -30,37 +39,40 @@ public class ReadFileTest {
 					displayData.add(line);
 					line = reader.readLine();
 				}
-			}else {
+			} else {
 				switch (args[0]) {
 				case iParameter:
-					while (line != null) { 
-						if (ck.getFlag(line).equals(iFlag)) { displayData.add(line); } 
-						line = reader.readLine(); }
-					break;
-					
-				case eParameter:
-					while (line != null) { 
-						if (ck.getFlag(line).equals(eFlag)) { displayData.add(line); } 
-						line = reader.readLine(); }
-					break;
-					
-				case wParameter:
-					while (line != null) { 
-						if (ck.getFlag(line).equals(wFlag)) { displayData.add(line); } 
-						line = reader.readLine(); }
+					while (line != null) {
+						if (ck.getFlag(line).equals(iFlag)) {
+							displayData.add(line);
+						}
+						line = reader.readLine();
+					}
 					break;
 
+				case eParameter:
+					while (line != null) {
+						if (ck.getFlag(line).equals(eFlag)) {
+							displayData.add(line);
+						}
+						line = reader.readLine();
+					}
+					break;
+
+				case wParameter:
+					while (line != null) {
+						if (ck.getFlag(line).equals(wFlag)) {
+							displayData.add(line);
+						}
+						line = reader.readLine();
+					}
+					break;
 
 				default:
+					System.out.println("ERROR OCCURED");
 					break;
 				}
 			}
-
-			/*
-			 * else if (args[0].contentEquals(iParameter)) { while (line != null) { // read
-			 * next line if (ck.getFlag(line).equals(iFlag)) { displayData.add(line); } line
-			 * = reader.readLine(); } }
-			 */
 
 			for (String num : displayData) {
 				System.out.println(num);

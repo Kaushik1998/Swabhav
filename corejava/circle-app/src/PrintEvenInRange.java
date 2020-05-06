@@ -16,7 +16,7 @@ public class PrintEvenInRange {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		EvenTest et = new EvenTest();
-		String input="1-55";
+		String input=args[0];
 		String inputArray[]=input.split("-");
 		int numberArray[] = new int[inputArray.length];
 		numberArray[0]= et.getInt(inputArray[0]);

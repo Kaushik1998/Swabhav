@@ -11,7 +11,7 @@ class Calculate{
         return total/2;
     }
     }
-}
+
 
 public class WithoutDryTest {
     public static void main(String[] args) {

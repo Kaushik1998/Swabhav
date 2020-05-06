@@ -25,7 +25,7 @@ public class ReadFileTest2 {
 			reader = new BufferedReader(new FileReader("C:\\Users\\kush\\Downloads\\db_app.log"));
 			String line = reader.readLine();
 
-			switch (args[]) {
+			switch (args[0]) {
 			case iParameter:
 				while (line != null) {
 					if (ck.getFlag(line).equals(iFlag)) {
