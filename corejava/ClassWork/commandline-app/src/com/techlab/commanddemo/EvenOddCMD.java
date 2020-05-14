@@ -9,6 +9,7 @@ public class EvenOddCMD {
 		ArrayList<Integer> evenArray = new ArrayList<Integer>();
 		ArrayList<Integer> oddArray = new ArrayList<Integer>();
 
+		
 		int evenAverage=0;
 		int oddAverage=0;
 		for (int i = 0; i < args.length - 1; i++) {
