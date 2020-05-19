@@ -5,8 +5,8 @@ import java.util.Random;
 public class Account {
 	private String accNo;
 	private String name;
-	private final int minimumBalance=500;
-	private double balance= minimumBalance;
+	private final int MINIMUM_BALANCE=500;
+	private double balance= MINIMUM_BALANCE;
 	
 	public Account(String name){
 		generateAccount();
@@ -37,7 +37,7 @@ public class Account {
 	}
 	
 	public void withdraw(int money) {
-		if(balance>=minimumBalance) {
+		if(balance>=MINIMUM_BALANCE) {
 			balance-=money;
 		}
 	}

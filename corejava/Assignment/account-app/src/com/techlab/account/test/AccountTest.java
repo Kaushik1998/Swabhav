@@ -10,6 +10,7 @@ public class AccountTest {
 		a.deposit(642);
 		a.withdraw(556);
 		printInfo(a);
+		
 	}
 
 	static void printInfo(Account a) {
