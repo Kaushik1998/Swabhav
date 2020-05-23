@@ -14,23 +14,28 @@ public class Test {
 
 	public static void printInfo(Foo f)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		int pass = 0, fail = 0, count = 0;
+		int pass = 0, fail = 0, total = 0;
 		;
 		Method[] methods = f.getClass().getMethods();
 		for (Method m : methods) {
 			if (m.isAnnotationPresent(TestCase.class)) {
-				boolean result = (boolean) m.invoke(f, null);
-				if (result == true) {
+				Object invoke = extracted(f, m);
+				boolean output = (boolean) invoke;
+				if (output == true) {
 					pass++;
-					count++;
+					total++;
 				} else {
 					fail++;
-					count++;
+					total++;
 				}
 			}
 		}
-		System.out.println("Total : " + count);
+		System.out.println("Total : " + total);
 		System.out.println("Passed : " + pass);
 		System.out.println("Failed : " + fail);
+	}
+
+	private static Object extracted(Foo f, Method m) throws IllegalAccessException, InvocationTargetException {
+		return m.invoke(f, null);
 	}
 }
