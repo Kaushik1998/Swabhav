@@ -41,9 +41,7 @@ public class Account {
 */
 	
 	public void setDate(String date) throws ParseException {
-		   String sDate1=date;  
-		   this.birthDate=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);  
-		    
+		   this.birthDate=new SimpleDateFormat("dd/MM/yyyy").parse(date);   
 	}
 	
 	public String getName() {
