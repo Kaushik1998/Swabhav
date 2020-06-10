@@ -16,7 +16,7 @@ public class Test {
 	static void printP(Professor p) {
 		System.out.println("Name : " + p.getName());
 		System.out.println("Qualification : "+ p.getQualification());
-		System.out.println("ID : "+ p.getID());
+		System.out.println("ID : "+ p.getProfessorID());
 		System.out.println("Salary : "+p.getSalary());
 		System.out.println("Birthday : " + p.getDate());
 		System.out.println("Address : "+ p.getAddress());

@@ -9,13 +9,6 @@ public class StaticTest {
 		// TODO Auto-generated method stub
 		CounterWithoutStaticTest obj1=new CounterWithoutStaticTest();
 		CounterWithStatic obj2= new CounterWithStatic();
-		
-		System.out.println(obj1.getCounter());
-		System.out.println(obj1.getCounter());
-		System.out.println(obj2.getCounter());
-		System.out.println(obj2.getCounter());
-		System.out.println(obj2.getCounter());
-		
-	}
+		}
 
 }

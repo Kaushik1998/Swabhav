@@ -10,7 +10,7 @@ public class ContactOperations {
 
 	private static Scanner sc;
 
-	public void run(Contact c) throws IOException {
+	public static void run(Contact c) throws IOException {
 		// TODO Auto-generated method stub
 		int choice;
 		boolean flag = true;

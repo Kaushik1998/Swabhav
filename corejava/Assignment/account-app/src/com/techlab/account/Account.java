@@ -40,6 +40,10 @@ public class Account {
 		if(balance>=MINIMUM_BALANCE) {
 			balance-=money;
 		}
+		
+		else {
+			throw new LowBalance();
+		}
 	}
 	
 	public double getBalance() {

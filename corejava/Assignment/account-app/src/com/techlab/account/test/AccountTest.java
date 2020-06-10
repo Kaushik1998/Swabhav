@@ -7,8 +7,8 @@ public class AccountTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Account a = new Account("Kaushik");
-		a.deposit(642);
 		a.withdraw(556);
+		a.withdraw(1000);
 		printInfo(a);
 		
 	}

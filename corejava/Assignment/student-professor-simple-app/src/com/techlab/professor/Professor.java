@@ -50,7 +50,7 @@ public class Professor extends Person {
 		return salary;
 	}
 
-	public String getID() {
+	public String getProfessorID() {
 		return professorID;
 	}
 

@@ -1,3 +1,4 @@
+
 package com.techlab.contact.test;
 
 import java.io.File;
@@ -18,17 +19,16 @@ public class ContactAppUI {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		// TODO Auto-generated method stub
 
-		ContactOperations contactOperation = new ContactOperations();
 		boolean flag = true;
 		System.out.println("\n\t--------------------------WELCOME--------------------------\n");
 		sc = new Scanner(System.in);
 		w: while (flag) {
-			System.out.println("1. Create new List \t 2. Load existing list. \t 3. Delete Lists");
+			System.out.println("1. Create new List \t 2. Load existing list. \t 3. Delete Lists \t 4. Exit");
 			int choice = sc.nextInt();
 			switch (choice) {
 			case 1:
 				Contact c = new Contact();
-				contactOperation.run(c);
+				ContactOperations.run(c);
 				System.out.println("Enter the filename");
 				String name = sc.next();
 				writeFileData(c, name);
@@ -37,7 +37,9 @@ public class ContactAppUI {
 				displayFileData();
 				System.out.println("Enter filename you want to open");
 				String fileName = sc.next();
-				contactOperation.run(getFileData(fileName));
+				Contact existingObject=getFileData(fileName);
+				ContactOperations.run(existingObject);
+				writeFileData(existingObject, fileName);
 				break;
 
 			case 3:
@@ -79,8 +81,8 @@ public class ContactAppUI {
 	static Contact getFileData(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
 		fileName = fileName.concat(".txt");
 		ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
-		Contact s = (Contact) in.readObject();
+		Contact contactObject = (Contact) in.readObject();
 		in.close();
-		return s;
+		return contactObject;
 	}
 }
