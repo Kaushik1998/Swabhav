@@ -42,22 +42,6 @@ public class Student {
 		return address;
 	}
 
-	public void setStudentID(int studentID) {
-		this.studentID = studentID;
-	}
-
-	public void setStudentName(String studentName) {
-		this.studentName = studentName;
-	}
-
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	@Override
 	public String toString() {
 		return "Student [\n\tstudentID=" + studentID + "\tstudentName=" + studentName + "\tbirthDate=" + birthDate

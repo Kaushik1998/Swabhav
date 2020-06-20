@@ -19,6 +19,17 @@ public class Partner {
 		this.partnerID = partnerID;
 		this.partnerName = partnerName;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder talentNames = new StringBuilder();
+		for (Talent t : talentList) {
+			talentNames.append(t.getTalentName());
+			talentNames.append("\t");
+		}
+		return "Partner [partnerID=" + partnerID + ", partnerName=" + partnerName + ", talents= " + talentNames
+				+ ", companyTurnOver=" + companyTurnOver + ", employeeStrength=" + employeeStrength + "]";
+	}
 
 	public int getPartnerID() {
 		return partnerID;
@@ -40,39 +51,17 @@ public class Partner {
 		return talentList;
 	}
 
-	public void setPartnerID(int partnerID) {
-		this.partnerID = partnerID;
-	}
-
-	public void setPartnerName(String partnerName) {
-		this.partnerName = partnerName;
-	}
-
 	public void setCompanyTurnOver(double companyTurnOver) {
 		this.companyTurnOver = companyTurnOver;
 	}
 
-	public void setEmployeeStrength(int employeeStrength) {
-		this.employeeStrength = employeeStrength;
+	public void updateTalentList() {
+		employeeStrength = talentList.size();
 	}
 
-	public void setTalentList(ArrayList<Talent> talentList) {
-		this.talentList = talentList;
-	}
-	
-	public void updateTalentList() {
-		employeeStrength=talentList.size();
-	}
-	
 	public void addTalent(Talent t) {
 		talentList.add(t);
 		updateTalentList();
 		t.setTalentPartner(getPartnerName());
-	}
-
-	@Override
-	public String toString() {
-		return "Partner [partnerID=" + partnerID + ", partnerName=" + partnerName + ", companyTurnOver="
-				+ companyTurnOver + ", employeeStrength=" + employeeStrength + "]";
 	}
 }

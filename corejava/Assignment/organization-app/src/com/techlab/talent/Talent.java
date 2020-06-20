@@ -20,7 +20,7 @@ public class Talent {
 				+ "\\t]";
 	}
 
-	public int getTalenrId() {
+	public int getTalentId() {
 		return talentId;
 	}
 
@@ -30,14 +30,6 @@ public class Talent {
 
 	public String getTalentPartner() {
 		return talentPartner;
-	}
-
-	public void setTalenrId(int talenrId) {
-		this.talentId = talenrId;
-	}
-
-	public void setTalentName(String talentName) {
-		this.talentName = talentName;
 	}
 
 	public void setTalentPartner(String talentPartner) {

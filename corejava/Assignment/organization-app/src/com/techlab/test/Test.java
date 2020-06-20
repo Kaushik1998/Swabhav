@@ -12,11 +12,14 @@ public class Test {
 		// TODO Auto-generated method stub
 		Organization swabhav =new Organization(8, "Swabhav", "15/05/1998");
 		Partner nexsales=new Partner(1, "Nexsales");
+		nexsales.setCompanyTurnOver(100000);
 		Talent kaushik=new Talent(93, "Kaushik");
+		Talent paras=new Talent(95, "Paras");
 
 		swabhav.addPartner(nexsales);
 		
 		swabhav.addTalent(kaushik);
+		swabhav.addTalent(paras);
 		nexsales.addTalent(kaushik);
 		
 		System.out.println(swabhav);

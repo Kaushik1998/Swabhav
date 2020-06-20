@@ -16,15 +16,15 @@ public class Organization {
 	private ArrayList<Partner> partnerList = new ArrayList<Partner>();
 
 	/**
-	 * @param id
-	 * @param name
-	 * @param register
+	 * @param organizationID
+	 * @param organizationName
+	 * @param registeredDate
 	 * @throws ParseException
 	 */
-	public Organization(int id, String name, String register) throws ParseException {
-		this.organizationID = id;
-		this.organizationName = name;
-		this.registeredDate = new SimpleDateFormat("dd/MM/yyyy").parse(register);
+	public Organization(int organizationID, String organizationName, String registeredDate) throws ParseException {
+		this.organizationID = organizationID;
+		this.organizationName = organizationName;
+		this.registeredDate = new SimpleDateFormat("dd/MM/yyyy").parse(registeredDate);
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Organization {
 		return organizationID;
 	}
 
-	public String getName() {
+	public String getOrganizationName() {
 		return organizationName;
 	}
 
@@ -60,24 +60,9 @@ public class Organization {
 		return registeredDate;
 	}
 
-	public void setRegister(Date register) {
-		this.registeredDate = register;
-	}
-
-	public void setId(int id) {
-		this.organizationID = id;
-	}
-
-	public void setName(String name) {
-		this.organizationName = name;
-	}
-
-	public void setPartner(ArrayList<Partner> partner) {
-		this.partnerList = partner;
-	}
-
 	public void addTalent(Talent t) {
 		talentList.add(t);
+		t.setTalentPartner(getOrganizationName());
 	}
 
 	public void addPartner(Partner p) {

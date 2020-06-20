@@ -9,7 +9,6 @@ public class CurrentAccount extends Account{
 		super(id, name, balance);
 		// TODO Auto-generated constructor stub
 	}
-
 	@Override
 	public void withdraw(int money) {
 		// TODO Auto-generated method stub

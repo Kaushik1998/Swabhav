@@ -8,7 +8,7 @@ public class Department {
 	// deptID,deptname,listOfStudents[], constructor and getters, toString override
 	private int deptID;
 	private String deptName;
-	ArrayList<Student> listOfStudents = new ArrayList<Student>();
+	private ArrayList<Student> listOfStudents = new ArrayList<Student>();
 
 	/**
 	 * @param deptID
@@ -27,20 +27,8 @@ public class Department {
 		return deptName;
 	}
 
-	public void setDeptID(int deptID) {
-		this.deptID = deptID;
-	}
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
 	public ArrayList<Student> getListOfStudents() {
 		return listOfStudents;
-	}
-
-	public void setListOfStudents(ArrayList<Student> listOfStudents) {
-		this.listOfStudents = listOfStudents;
 	}
 
 	public void addStudent(Student s) {

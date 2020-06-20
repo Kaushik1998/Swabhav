@@ -32,18 +32,6 @@ public class College {
 		return listOfDepartments;
 	}
 
-	public void setCollegeID(int collegeID) {
-		this.collegeID = collegeID;
-	}
-
-	public void setCollegeName(String collegeName) {
-		this.collegeName = collegeName;
-	}
-
-	public void setListOfDepartments(ArrayList<Department> listOfDepartments) {
-		this.listOfDepartments = listOfDepartments;
-	}
-
 	public void addDepartment(Department d) {
 		listOfDepartments.add(d);
 	}

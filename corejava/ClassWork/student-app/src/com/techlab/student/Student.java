@@ -62,7 +62,7 @@ public class Student {
 		}
 	}
 	
-	abstract void data() {
+	void data() {
 		System.out.println("ddd");
 	}
 	
