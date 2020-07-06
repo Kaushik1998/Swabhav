@@ -23,7 +23,7 @@ public class LineItem implements Serializable {
 		}
 		updateTotalCost();
 	}
-
+	
 	public void add(Product p, int quantity) {
 		boolean flag = true;
 		Set<Product> key = cart.keySet();
