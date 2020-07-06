@@ -1,5 +1,6 @@
 package com.techlab.tictactoe;
 
+import com.techlab.board.AlreadyMarkedException;
 import com.techlab.board.Cell;
 import com.techlab.board.IBoard;
 import com.techlab.board.analyzer.IBoardAnalyzer;
@@ -21,20 +22,38 @@ public class TicTacToe implements IPlayers, IBoard, IPlayerChoice, IBoardAnalyze
 		}
 	}
 
+	public mark getCurrentPlayerMark() {
+		return players[playerPointer].getPlayerMark();
+	}
+
+	public String getCurrentPlayerName() {
+		return players[playerPointer].getPlayerName();
+	}
+
+	public Player[] getPlayers() {
+		return players;
+	}
+
 	public void enterInput(int x, int y) {
-		players[playerPointer].putMark(x - 1, y - 1);
-		for (Cell[] row : board.getCellBoard()) {
-			for (Cell column : row) {
-				System.out.print(" " + column + " ");
+
+		if (board.cellBoard[x][y].isMarked()) {
+			throw new AlreadyMarkedException(x, y);
+		} else {
+			players[playerPointer].putMark(x - 1, y - 1);
+			for (Cell[] row : board.getCellBoard()) {
+				for (Cell column : row) {
+					System.out.print(" " + column + " ");
+				}
+				System.out.println();
 			}
-			System.out.println();
+			if (analyzer.checkPattern()) {
+				winnerPlayer = players[playerPointer];
+				winnerDeclared = true;
+				// System.out.println("Pattern found");
+			}
+			updatePlayerPointer();
 		}
-		if (analyzer.checkPattern()) {
-			winnerPlayer = players[playerPointer];
-			winnerDeclared = true;
-			// System.out.println("Pattern found");
-		}
-		updatePlayerPointer();
+
 	}
 
 	public boolean isWinnerDeclared() {

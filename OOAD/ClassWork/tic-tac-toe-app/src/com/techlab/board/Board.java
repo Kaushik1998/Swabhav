@@ -35,9 +35,9 @@ public class Board implements IBoardDimension, IPlayerChoice {
 			if (!cellBoard[x][y].isMarked()) {
 				cellBoard[x][y].setCellMark(playermark);
 			} else {
-				throw new Exception();
+				throw new AlreadyMarkedException("Cell".concat(String.valueOf(x)).concat(String.valueOf(y)));
 			}
-		} catch (Exception e) {
+		} catch (AlreadyMarkedException e) {
 			e.printStackTrace();
 		}
 	}
