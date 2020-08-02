@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="myButton" id="pingJS">
+      <button type="button" id="redButton" onclick="changeColor('red');">
+        Red
+      </button>
+      <button type="button" id="blueButton" onclick="changeColor('blue');">
+        Blue
+      </button>
+      <div>
+        <select id="color" name="colors">
+          <option value="red">Red</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="#fff">#fff</option>
+        </select>
+        <button id="dropdownButton" onclick="updateColour();">
+          Change Colour
+        </button>
+      </div>
+      <script src="main.js"></script>
+    </div>
+  </body>
+</html>
