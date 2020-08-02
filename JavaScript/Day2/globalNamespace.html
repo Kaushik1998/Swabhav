@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global Namespace</title>
+  </head>
+  <body>
+    <h1 class="firstH1"></h1>
+    <h1 class="secondH1"></h1>
+    <script src="namespace1.js"></script>
+    <script src="namespace2.js"></script>
+    <script>
+      let firstH1 = document.querySelector(".firstH1");
+      firstH1.innerHTML = window.mySpace.swabhav.employeeInfo();
+      let secondH1 = document.querySelector(".secondH1");
+      secondH1.innerHTML = window.mySpace.NexSales.employeeInfo();
+    </script>
+  </body>
+</html>
