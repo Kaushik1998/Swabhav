@@ -1,4 +1,3 @@
-
 function myFunction(first, second, third) {
   this.first = first;
   this.second = second;
@@ -15,8 +14,8 @@ myFunction.prototype.display = function () {
     this.third
   );
 };
-
-let obj1 = new myFunction(1,2,3);
-let obj2 = new myFunction('1st','2nd','3rd');
-console.log(obj1);
-
+myFunction.prototype.newFunction = function () {
+  return "this is new function";
+};
+let obj1 = new myFunction(1, 2, 3);
+console.log(new Object());

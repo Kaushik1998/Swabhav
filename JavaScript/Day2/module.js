@@ -1,11 +1,15 @@
-function myModule() {
+class myModule() {
   let firstParameter = "This is first parameter";
   let secondParameter = "This is second Parameter";
 
-  return {
-    firstParameter: firstParameter,
-    secondParameter: secondParameter,
-  };
+  setFirst(name){
+    this.firstParameter=name;
+  }
+
+  getFirst(){
+    return `First Para is ${firstParameter}`;
+  }
+
 }
 
 let myVariable = new myModule();
