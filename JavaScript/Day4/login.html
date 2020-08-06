@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        margin: 15px;
+        padding: 5px;
+      }
+      input {
+        display: inline-block;
+        margin: 5px;
+      }
+      p {
+        display: inline-block;
+        font-size: 13px;
+      }
+
+      .valid {
+        color: green;
+        border: 1in greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="userID">User ID</label>
+      <input type="text" id="userID" />
+      <p id="pUser"></p>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" />
+      <p id="pPassword"></p>
+    </div>
+    <div>
+      <input type="button" value="Submit" onclick="validate()" />
+    </div>
+    <script src="login.js"></script>
+
+  </body>
+</html>

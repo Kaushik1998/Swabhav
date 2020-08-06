@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>To Do List</h1>
+      <div class="content">
+        <input type="text" name="" id="task" placeholder="Enter Task" />
+        <!-- <input type="button" value="Add" onclick="addTask();" id="myButton"> -->
+        <i class="fa fa-plus" aria-hidden="true" onclick="addTask();"></i>
+        <ul id="list"></ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <header><h1>Task Done</h1></header>
+        <ul id="done"></ul>
+      </div>
+    </div>
+    <script src="todo.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        margin: 15px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="myText">Your Text</label>
+      <input type="text" id="myText" oninput="update()" />
+    </div>
+    <div>
+      <label for="font">Font-size</label>
+      <input type="number" id="font" oninput="update()" />
+    </div>
+    <div>
+      <label for="bgColor">Background Color</label>
+      <input type="text" id="bgColor" oninput="update()" />
+    </div>
+    <div>
+      <label for="frColor">Foreground Color</label>
+      <input type="text" id="frColor" oninput="update()" />
+    </div>
+    <p></p>
+    <script src="form.js"></script>
+  </body>
+</html>

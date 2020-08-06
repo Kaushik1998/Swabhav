@@ -1,0 +1,29 @@
+input {
+  font-family: inherit;
+  color: blue;
+
+  border-radius: 10%;
+}
+i {
+  border: blue double;
+  border-radius: 10%;
+  min-width: 20px;
+  text-align: center;
+}
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+.container {
+  text-align: center;
+  min-height: 200px;
+  border: thick solid #0000ff;
+  margin: 5px;
+  color: blue;
+}
+.content {
+  text-align: left;
+  display: inline-block;
+}
+li {
+  list-style-type: none;
+}

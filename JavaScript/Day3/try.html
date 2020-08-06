@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="element">Enter your desired tag</label>
+    <input type="text" id="element" />
+    <button onclick="create()">Create</button>
+
+    <script>
+      const tag = document.getElementById("element");
+      function create() {
+        document.body.appendChild(document.createElement(tag.value));
+      }
+    </script>
+  </body>
+</html>
