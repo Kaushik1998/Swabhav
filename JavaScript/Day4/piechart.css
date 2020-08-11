@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+h1 {
+  border: rgb(60,239,76) double;
+  padding: 5px;
+  color: green;
+}
+

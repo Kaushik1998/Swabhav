@@ -19,7 +19,10 @@ submitButton.addEventListener("click", addLocalStorage);
 function addLocalStorage() {
   localStorage.setItem("rightAnswers", rightAnswers);
   localStorage.setItem("wrongAnswers", wrongAnswers);
-  localStorage.setItem("questionsUnAttempted", questions.length - questionsAttempted);
+  localStorage.setItem(
+    "questionsUnAttempted",
+    questions.length - questionsAttempted
+  );
 }
 
 function nextQuestion() {
@@ -33,6 +36,7 @@ function nextQuestion() {
   } else {
     alert("You have attempted all questions .\nPlease click on Submit Button.");
   }
+  document.body.style.backgroundColor = "aquamarine";
 }
 
 function previousQuestion() {
@@ -42,6 +46,7 @@ function previousQuestion() {
     i--;
   }
   setQuestion();
+  document.body.style.backgroundColor = "aquamarine";
 }
 
 function startGame() {
@@ -73,9 +78,11 @@ function submitAnswer(btn) {
     questionsAttempted++;
     if (btn.dataset.correct == "true") {
       rightAnswers++;
+      document.body.style.backgroundColor = "rgb(54,241,102)";
       //alert("Right");
     } else {
       wrongAnswers++;
+      document.body.style.backgroundColor = "rgb(254,57,57)";
       //alert("Wrong");
     }
   } else {

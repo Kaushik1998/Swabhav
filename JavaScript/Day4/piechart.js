@@ -13,13 +13,13 @@ var myChart = new Chart(ctx, {
         label: "# of Votes",
         data: [rightAnswers, wrongAnswers, unAnswered],
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
+          "rgba(54,241,102, 0.2)",
+          "rgba(254,57,57, 0.2)",
           "rgba(255, 206, 86, 0.2)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
+          "rgba(54,241,102, 1)",
+          "rgba(254,57,57, 1)",
           "rgba(255, 206, 86, 1)",
         ],
         borderWidth: 1,
