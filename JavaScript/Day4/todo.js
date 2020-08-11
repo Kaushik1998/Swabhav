@@ -4,9 +4,12 @@ const done = document.getElementById("done");
 const myButton = document.getElementById("myButton");
 //myButton.innerText='<i class="fa fa-plus" aria-hidden="true"></i>'
 function removeMe(tag) {
-  let doneTask = `<li><input type="checkbox" checked><s>${tag.innerText}</s></li>`;
-  done.innerHTML += doneTask;
-  tag.remove();
+  let innerCheckbox = tag.children
+  if(innerCheckbox[0].checked){
+    let doneTask = `<li><input type="checkbox" checked><s>${tag.innerText}</s></li>`;
+    done.innerHTML += doneTask;
+    tag.remove();
+  }
 }
 
 const addTask = () => {

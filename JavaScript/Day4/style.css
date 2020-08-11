@@ -1,8 +1,7 @@
 input {
   font-family: inherit;
   color: blue;
-
-  border-radius: 10%;
+  border: red double;
 }
 i {
   border: blue double;
@@ -16,9 +15,9 @@ body {
 .container {
   text-align: center;
   min-height: 200px;
-  border: thick solid #0000ff;
   margin: 5px;
   color: blue;
+  border: thick solid #0000ff;
 }
 .content {
   text-align: left;
