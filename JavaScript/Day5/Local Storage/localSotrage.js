@@ -25,3 +25,9 @@ for (let i = 0; i < localStorage.length; i++) {
     localData.innerHTML += `<li><i class="fa fa-key"></i> Key : ${lsKey} <br> <i class="fa fa-book"></i> Value : ${lsValue}</li>`;
   }
 }
+
+let a="a";
+function myFuntion(){
+  let a ="Not a"
+  console.log(a)
+}

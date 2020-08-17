@@ -19,6 +19,7 @@
         let counter = 0;
         return function () {
           document.querySelector("h2").innerText = counter++;
+          console.log(counter);
         };
       })();
     </script>
