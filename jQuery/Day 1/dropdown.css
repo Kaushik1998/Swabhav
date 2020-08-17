@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 4vw;
+  height: 10vw;
+  background-color: white;
+  min-width: 40%;
+  border: crimson 8px dashed;
+  padding: 3vw;
+}
+
+label {
+  display: block;
+}
+
+#colors {
+  font-family: inherit;
+  font-size: 4vw;
+}
+
+#colors:hover{
+    background-color: aquamarine;
+}
