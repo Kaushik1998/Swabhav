@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: darkcyan;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container {
+    display: flex;
+    padding: 1vw;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    margin: 1vw auto;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 5px solid black;
+    position: relative;
+}
+
+.container label,
+button {
+    margin: 1vw;
+    font-size: 1.5rem;
+}
+
+.container input {
+    font-size: 2vh;
+}
+
+button {
+    display: block;
+    position: static;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: darkslateblue;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    font-size: 1.5rem;
+    border: cornflowerblue dashed;
+    padding: 1vw;
+    margin: .5vw;
+}
+
+li:hover {
+    border: darkblue solid;
+}
