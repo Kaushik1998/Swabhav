@@ -4,11 +4,14 @@
     const value = localStorage.getItem(key);
     const li = document.createElement("li");
     li.innerHTML = key;
-    li.setAttribute("onclick", "checkMe(this)");
-    if (value == "undone") {
+    li.setAttribute("onclick", "checkMyStatus(this)");
+    // if (value == "undone") {
+    //   $("#undone").append(li);
+    // } else if (value == "done") {
+    //   $("#done").append(li);
+    // }
+    if (key != "randid") {
       $("#undone").append(li);
-    } else if (value == "done") {
-      $("#done").append(li);
     }
   }
 })();
@@ -25,7 +28,21 @@ $("#clear").click(function (e) {
   location.reload();
 });
 
-const checkMe = (li) => {
-  localStorage.setItem(li.innerHTML, "done");
+const checkMyStatus = (li) => {
+  // if (localStorage.getItem(li.innerText) == "undone") {
+  //   localStorage.setItem(li.innerText, "done");
+  // } else if (localStorage.getItem(li.innerText) == "done") {
+  //   localStorage.removeItem(li.innerText);
+
+  localStorage.removeItem(`${li.innerText}`);
+  li.remove();
+  //}
   location.reload();
+  //li.setAttribute("onlick", "removeMe(this)");
+  //li.onclick = removeMe(li);
 };
+
+// const removeMe = (self) => {
+//   localStorage.removeItem(self.innerHTML);
+//   self.remove();
+// };

@@ -19,10 +19,16 @@ body {
     position: relative;
 }
 
+.container:hover {
+    background-color: #F4DC12;
+    background-size: 50%;
+    color: blue;
+}
+
 .container label,
 button {
     margin: 1vw;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 .container input {
@@ -33,6 +39,7 @@ button {
     display: block;
     position: static;
     font-family: inherit;
+    margin: 0 10px;
 }
 
 button:hover {
@@ -41,13 +48,18 @@ button:hover {
 }
 
 li {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     list-style-type: none;
-    font-size: 1.5rem;
-    border: cornflowerblue dashed;
+    font-size: 1rem;
+    border: cornflowerblue solid;
     padding: 1vw;
-    margin: .5vw;
+    margin: 1vw;
 }
 
 li:hover {
-    border: darkblue solid;
+    position: relative;
+    border: darkblue dashed;
+    bottom: 10px;
 }
