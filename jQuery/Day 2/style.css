@@ -48,18 +48,23 @@ button:hover {
 }
 
 li {
+
     display: flex;
     justify-content: center;
     align-items: stretch;
     list-style-type: none;
     font-size: 1rem;
-    border: cornflowerblue solid;
+    border: chocolate solid;
     padding: 1vw;
     margin: 1vw;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: currentColor;
 }
 
 li:hover {
     position: relative;
-    border: darkblue dashed;
     bottom: 10px;
+    background-color: darkslateblue;
+    color: white;
+    border: #F4DC12 dashed;
 }

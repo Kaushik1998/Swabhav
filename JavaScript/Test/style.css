@@ -1,0 +1,42 @@
+/* .circle {
+    width: 450px;
+    height: 450px;
+    border-top: 30px solid blue;
+    border-right: 30px solid #718242;
+    border-bottom: 30px solid #63ae98;
+    border-left: 30px solid #b45447;
+    border-radius: 50%;
+
+} */
+
+.circle {
+    width: 0px;
+    height: 0px;
+    border-top: 210px solid #416FA6;
+    border-left: 210px solid #B45447;
+    border-right: 210px solid #718242;
+    border-bottom: 210px solid #FFA500;
+    /* border: 210px solid blue; */
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 0px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+/* .innerCircle {
+    width: 0px;
+    height: 0px;
+    border-top: 210px solid #416FA6;
+    border-left: 210px solid #B45447;
+    border-right: 210px solid #718242;
+    border-bottom: 210px solid #FFA500;
+    border-radius: 50%;
+    margin-left: 15px;
+    margin-right: 0px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    /* border-radius: 50%;
+    background-color: green; 
+}
+*/
