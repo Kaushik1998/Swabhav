@@ -1,5 +1,7 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@600&display=swap');
+body {
     background-color: #601DFB;
+    
 }
 
 .myContainer {
@@ -8,18 +10,18 @@ body{
 
 }
 
-.card{
+.card {
     min-width: 50vw;
     padding: 20px 0 0;
 }
 
 .card {
-    animation: glow 3s ease-in-out infinite alternate ;
+    animation: glow 3s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
     from {
-        
+
         box-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px aqua, 0 0 15px aquamarine, 0 0 20px azure, 0 0 40px #E8F92B, 0 0 50px #E8F92B;
     }
 
