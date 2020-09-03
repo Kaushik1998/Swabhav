@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onclick='myFunction(event)'>
+    <p>Click on a paragraph. An alert box will alert the element whose eventlistener triggered the event.</p>
+    <p><strong>Note:</strong> The currentTarget property does not necessarily return the element that was clicked on,
+        but the element whose eventlistener triggered the event.</p>
+    <script>
+        function myFunction(event) {
+            console.log(event);
+            alert("CT" + event.currentTarget.nodeName); // body
+            alert("T" + event.target.nodeName); // strong
+        }
+    </script>
+
+</html>

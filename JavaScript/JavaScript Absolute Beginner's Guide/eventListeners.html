@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Click Anywhere!</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h3 {
+            border: 5px black solid;
+        }
+    </style>
+</head>
+<h1>Events Triggered</h1>
+<div>
+    <h3>Mouse Over Detection</h3>
+</div>
+
+<div>
+    <h2>Remove Events</h2>
+    <button id="onclick">OnClick</button>
+    <button id="onmousedown">On Mouse Down</button>
+    <button id="onmouseup">On Mouse Up</button>
+    <button id="ondblclick">On Double Click</button>
+    <button id="onscroll">On Scroll</button>
+    <button id="onkeydown">On Key Down</button>
+    <button id="onkeyup">On Key Up</button>
+</div>
+
+<ul></ul>
+
+<body>
+    <script>
+        const h1 = document.querySelector("h1");
+        const ul = document.querySelector("ul");
+
+        function updateDetails(eventName) {
+            let li = document.createElement("li");
+            li.textContent = `Event : ${eventName}`;
+            ul.appendChild(li);
+        }
+
+        document.querySelector("h3").onmouseover = () => {
+            updateDetails("Move Over")
+        }
+        let test = document.onclick = () => {
+            updateDetails("OnClick");
+        }
+        document.onmousedown = () => {
+            updateDetails("Mouse Down");
+        }
+
+        document.onmouseup = () => {
+            updateDetails("Mouse Up");
+        }
+
+        document.ondblclick = () => {
+            updateDetails("Double Click")
+        }
+
+        document.onscroll = () => {
+            updateDetails("On Scroll")
+        }
+
+        document.onkeydown = () => {
+            updateDetails("On Key Down")
+        }
+
+        document.onkeyup = () => {
+            updateDetails("On Key Up")
+        }
+
+        // This is how you remove elements 
+        document.getElementById("onclick").onclick = function (event) {
+            document.onclick = null;
+            //this.parentNode.removeChild(this)
+            //event.currentTarget.remove()
+            //this.remove();
+            //event.target.remove()
+            console.log(event.currentTarget);
+            console.log(event.target);
+        }
+    </script>
+</body>
+
+</html>
