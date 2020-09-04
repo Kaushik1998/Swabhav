@@ -17,12 +17,37 @@ const updateOverlayPutButton = document.getElementById(
 const updateOverlayCloseButton = document.getElementById(
   "updateOverlayCloseButton"
 );
+const searchNavbarButton = document.getElementById("searchNavbarButton");
 let studentData;
 let interval;
 
 function customJSONtoSend(name, age, rollno, email, isMale, date) {
   return { name, age, rollno, email, isMale, date };
 }
+
+$(searchNavbarButton).click(function (e) {
+  e.preventDefault();
+  let searchFieldNavbar = $("#searchFieldNavbar").val();
+  if (searchFieldNavbar) {
+    table.innerHTML = null;
+    for (student in studentData) {
+      for (element in student) {
+        if (student[element].includes(searchFieldNavbar)) {
+          let tr = document.createElement("tr");
+          $(tr).append(getTh(index++));
+          $(tr).append(getTd(student["name"]));
+          $(tr).append(getTd(student["id"]));
+          $(tr).append(getTd(student["age"]));
+          $(tr).append(getTd(student["email"]));
+          $(tr).append(getTd(student["rollNo"]));
+          $(tr).append(getTd(student["date"]));
+          $(tr).append(getTd(student["isMale"]));
+          $(table).append(tr);
+        }
+      }
+    }
+  }
+});
 
 $(updateOverlayPutButton).click(function (e) {
   e.preventDefault();
@@ -191,4 +216,3 @@ $(document).ready(function () {
     ajaxCallToAPI();
   }, 10000);
 });
-
