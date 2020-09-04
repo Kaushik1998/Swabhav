@@ -12,7 +12,7 @@
 
 <body>
 
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
         <a class="navbar-brand" href="#">Kaushik</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,10 +28,12 @@
                     <a class="nav-link" href="#"><button class="btn btn-dark" id="add">Add</button></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"> <button class="btn btn-dark" id="reload">Delete</button></a>
+                    <a class="nav-link" href="#"> <button class="btn btn-dark"
+                            id="deleteNavbarButton">Delete</button></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#"> <button class="btn btn-dark" id="reload">Update</button></a>
+                    <a class="nav-link" href="#"> <button class="btn btn-dark"
+                            id="updateNavbarButton">Update</button></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -58,7 +60,7 @@
     </table>
 
     <div class="container">
-        <div id="overlay">
+        <div id="addOverlay" class="overlay">
             <div class="card text-center">
                 <div class="card-title">
                     <h3>Post your data</h3>
@@ -92,6 +94,58 @@
         </div>
     </div>
 
+    <div class="container">
+        <div id="deleteOverlay" class="overlay">
+            <div class="card text-center">
+                <div class="card-title">
+                    <h3>Enter ID</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="deleteID">
+                    </div>
+                    <button class="btn btn-dark" id="deleteOverlayDeleteButton">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="updateOverlay" class="overlay">
+            <div class="card text-center">
+                <div class="card-title">
+                    <h3>Update your data</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="updateOverlayID">ID</label>
+                        <input type="text" class="form-control" id="updateOverlayID">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateOverlayName">Name</label>
+                        <input type="text" class="form-control" id="updateOverlayName">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateOverlayAge">Age</label>
+                        <input type="text" class="form-control" id="updateOverlayAge">
+                        <label for="updateOverlayRollno">Roll No</label>
+                        <input type="text" class="form-control" id="updaterOverlayRollno">
+                    </div>
+                    <div class="form-group">
+                        <label for="updateOverlayEmail">Email address</label>
+                        <input type="email" class="form-control" id="updateOverlayEmail" aria-describedby="emailHelp">
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="updateOverlayMale">
+                        <label class="custom-control-label" for="updateOverlayMale">Male</label>
+                    </div>
+
+                    <button class="btn btn-dark" id="updateOverlayPutButton">Put</button>
+                    <button class="btn btn-dark" id="updateOverlayCloseButton">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

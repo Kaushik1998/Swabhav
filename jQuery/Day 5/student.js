@@ -1,19 +1,97 @@
 const table = document.getElementById("table");
-const reload = document.getElementById("reload");
-const add = document.getElementById("add");
-const overlay = document.getElementById("overlay");
-const postButton = document.getElementById("post");
-const closeButton = document.getElementById("close");
+const reloadNavbarButton = document.getElementById("reload");
+const addNavbarButton = document.getElementById("add");
+const addOverlay = document.getElementById("addOverlay");
+const updateOverlayPostButton = document.getElementById("post");
+const closeAddOverlay = document.getElementById("close");
+const deleteNavbarButton = document.getElementById("deleteNavbarButton");
+const deleteOverlay = document.getElementById("deleteOverlay");
+const deleteOverlayDeleteButton = document.getElementById(
+  "deleteOverlayDeleteButton"
+);
+const updateNavbarButton = document.getElementById("updateNavbarButton");
+const updateOverlay = document.getElementById("updateOverlay");
+const updateOverlayPutButton = document.getElementById(
+  "updateOverlayPutButton"
+);
+const updateOverlayCloseButton = document.getElementById(
+  "updateOverlayCloseButton"
+);
+let studentData;
 let interval;
 
-$(closeButton).click(function (e) {
+function customJSONtoSend(name, age, rollno, email, isMale, date) {
+  return { name, age, rollno, email, isMale, date };
+}
+
+$(updateOverlayPutButton).click(function (e) {
   e.preventDefault();
-  document.getElementById("overlay").style.display = "none";
+  let id = $("#updateOverlayID").val();
+  let name = $("#updateOverlayName").val();
+  let age = $("#updateOverlayAge").val();
+  let rollno = $("#updateOverlayRollno").val();
+  let email = $("#updateOverlayEmail").val();
+  let male;
+  if ($("#updateOverlayMale").val() == "on") {
+    male = true;
+  }
+
+  let date = moment().format("yyyy-MM-DD");
+
+  let userData = new customJSONtoSend(name, age, rollno, email, male, date);
+  userData["id"] = id;
+  $.ajax({
+    type: "PUT",
+    url: `http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/${id}`,
+    data: userData,
+    success: function () {
+      alert(`ID : ${id}\nhas been updated.`);
+    },
+  });
 });
 
-$(postButton).click(function (e) {
+$(updateNavbarButton).click(function (e) {
   e.preventDefault();
+  updateOverlay.classList.add("show");
+  updateOverlay.classList.remove("hide");
+});
 
+$(updateOverlayCloseButton).click(function (e) {
+  e.preventDefault();
+  updateOverlay.classList.add("hide");
+  updateOverlay.classList.remove("show");
+});
+
+$(deleteOverlayDeleteButton).click(function (e) {
+  e.preventDefault();
+  let deleteID = $("#deleteID").val();
+  $.ajax({
+    type: "Delete",
+    url: `http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/${deleteID}`,
+    success: function () {
+      alert(`ID : ${deleteID} \nhas been deleted`);
+      ajaxCallToAPI();
+    },
+  });
+  deleteOverlay.classList.add("hide");
+  deleteOverlay.classList.remove("show");
+});
+
+$(deleteNavbarButton).click(function (e) {
+  e.preventDefault();
+  deleteOverlay.classList.add("show");
+  deleteOverlay.classList.remove("hide");
+});
+
+$(closeAddOverlay).click(function (e) {
+  e.preventDefault();
+  addOverlay.classList.remove("show");
+  addOverlay.classList.add("hide");
+});
+
+$(updateOverlayPostButton).click(function (e) {
+  e.preventDefault();
+  closeAddOverlay.click();
   let name = $("#name").val();
   let age = $("#age").val();
   let rollno = $("#rollno").val();
@@ -25,7 +103,7 @@ $(postButton).click(function (e) {
 
   let date = moment().format("yyyy-MM-DD");
 
-  let userData = new data(name, age, rollno, email, male, date);
+  let userData = new customJSONtoSend(name, age, rollno, email, male, date);
 
   $.ajax({
     type: "POST",
@@ -38,19 +116,20 @@ $(postButton).click(function (e) {
   });
 });
 
-$(add).click(function (e) {
+$(addNavbarButton).click(function (e) {
   e.preventDefault();
-  overlay.style.display = "flex";
-  overlay.style.alignItems = "center";
-  overlay.style.justifyContent = "center";
+  addOverlay.classList.remove("hide");
+  addOverlay.classList.add("show");
 });
 
-const ajju = () => {
+const ajaxCallToAPI = () => {
   $.ajax({
     type: "get",
     url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/",
     dataType: "json",
     success: function (response) {
+      table.innerHTML = null;
+      studentData = response;
       let index = 1;
       response.forEach((element) => {
         let tr = document.createElement("tr");
@@ -67,9 +146,9 @@ const ajju = () => {
     },
   });
 };
-$(reload).click(function (e) {
+$(reloadNavbarButton).click(function (e) {
   e.preventDefault();
-  ajju();
+  ajaxCallToAPI();
 });
 
 function getTd(data) {
@@ -98,13 +177,18 @@ function getTr(index, data) {
   return tr;
 }
 
+function closeAllOtherOverlay(closeElement) {
+  let closeElements = [closeAddOverlay];
+
+  for (element in closeElements) {
+    element.click();
+  }
+}
+
 $(document).ready(function () {
-  ajju();
+  ajaxCallToAPI();
   interval = setInterval(function () {
-    ajju();
+    ajaxCallToAPI();
   }, 10000);
 });
 
-function data(name, age, rollno, email, isMale, date) {
-  return { name, age, rollno, email, isMale, date };
-}
