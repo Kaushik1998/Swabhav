@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angularjs.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="myctrl" ng-init="student = {   Rollno: 101,
+        Name: 'abc' , Cgpa: 7.5 }">
+        <p>{{student["Rollno"]}}</p>
+        <p>{{student["Name"]}}</p>
+        <p>{{student["Cgpa"]}}</p>
+    </div>
+    <script>
+        let app = angular.module('myapp', []);
+        app.controller('myctrl', function ($scope) {
+
+        });
+    </script>
+</body>
+
+</html>

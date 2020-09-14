@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="student">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angularjs.js"></script>
+</head>
+
+<body>
+
+    <!-- <div ng-controller="myctrl">
+        <ul>
+            <li ng-repeat="name in names">
+                {{name}}
+            </li>
+        </ul>
+    </div> -->
+
+    <div ng-controller="myctrl">
+        <button ng-click="loadStudents()">Load Students</button>
+    </div>
+
+    <div id="s"></div>
+
+    <script>
+        let s = document.getElementById("s")
+        let app = angular.module("student", [])
+        app.controller('myctrl', function ($scope) {
+            $scope.names = ["kaushik", "shailesh", "paras", "jayant"]
+            $scope.loadStudents = function () {
+                for (name of this.names) {
+                    s.innerHTML += name + "<br>"
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script type="text/javascript">
+        let app = angular.module('myapp', []);
+        app.controller('myctrl', function ($scope) {
+            $scope.pi = 22 / 7
+        });
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div ng-controller="myctrl">
+        {{pi.toFixed(2)}}
+    </div>
+</body>
+
+</html>

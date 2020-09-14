@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="angularjs.js"></script>
+</head>
+
+<body ng-controller="myctrl">
+
+    <h1>One Way Binding</h1>
+    <p>Name : {{name}}</p>
+    <p>Roll No : {{rollno}}</p>
+    <p>CGPA : {{cgpa}}</p>
+    <hr>
+
+    <div>
+        <h1>Two Way Binding</h1>
+        <label for="name">Name</label>
+        <input type="text" ng-model="name" id="name">
+        <label for="rollno">Roll No</label>
+        <input type="text" ng-model="rollno" id="rollno">
+        <label for="cgpa">CGPA</label>
+        <input type="text" ng-model="cgpa" id="cgpa">
+        <p>Name : {{name}}</p>
+        <p>Roll No : {{rollno}}</p>
+        <p>CGPA : {{cgpa}}</p>
+    </div>
+    <hr>
+    <script>
+        let app = angular.module('myapp', []);
+
+        app.controller('myctrl', function ($scope) {
+            $scope.rollno = 93
+            $scope.name = "Kaushik"
+            $scope.cgpa = 9.5
+        });
+    </script>
+</body>
+
+</html>
