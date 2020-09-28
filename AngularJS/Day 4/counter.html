@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="counterApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body ng-controller="mainCtrl">
+    <div ng-controller="incrementCtrl">
+        <button ng-click="increment()">Increment</button>
+    </div>
+
+    <div ng-controller="decrementCtrl">
+        <button ng-click="decrement()">Decrement</button>
+    </div>
+    <div>
+        <h1>
+            {{count}}
+        </h1>
+    </div>
+    <script src="angularjs.js"></script>
+    <script src="counter.js"></script>
+</body>
+
+</html>
