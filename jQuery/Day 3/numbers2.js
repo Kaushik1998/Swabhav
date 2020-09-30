@@ -1,12 +1,15 @@
-var result = (function() {
+var result = (function () {
   return {
     setData: function () {
       let data = localStorage.getItem("number");
       console.log(data);
       if (data) {
         $("#number").text(data);
-        $("#timeAgo").append(
-          moment(localStorage.getItem("time"), "YYYY-MM-DD HH:mm:SS").fromNow()
+        $("#timeAgo").html(
+          `Updated : ${moment(
+            localStorage.getItem("time"),
+            "YYYY-MM-DD HH:mm:SS"
+          ).fromNow()}`
         );
       }
     },
@@ -29,5 +32,3 @@ $("#button").click(function (e) {
     });
   }
 });
-
-

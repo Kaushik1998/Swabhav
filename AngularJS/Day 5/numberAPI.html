@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="numberApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js" integrity="sha512-/uxeq6VcJ+do+PtGgWZwRL/Z63r53cK6yek3NzvQwce6aCeheKRD59IuRsEFuNU8b0B/lZ6fUx1fncf0wMIm5Q==" crossorigin="anonymous"></script>
+    <script src="angularjs.js"></script>
+</head>
+
+<body ng-controller="numberController" ng-init="loadVariables()">
+    <div class="card text-center" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title display-4">Numbers API</h5>
+            <p class="card-text">Enter your Number</p>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Get Fun Fact's" ng-model="number">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-primary" ng-click="getData()">Submit</button>
+                </div>
+            </div>
+            <h5 class="card-subtitle mb-2">
+                {{numberData}}
+            </h5>
+            <div class="card-footer">
+                <h6 class="card-text text-lowercase"> {{timespan}} </h6>
+                <button ng-click="serviceTest()">Test</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+    <script src="number.js"></script>
+</body>
+
+</html>
