@@ -10,6 +10,14 @@
         .container-fluid {
             margin: 2%;
         }
+
+        .strikethroughAdd {
+            text-decoration: line-through !important; 
+        }
+
+        .strikethroughRemove {
+            text-decoration: none;
+        }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -27,6 +35,7 @@
                 <th scope="col">Task</th>
                 <th scope="col">Time</th>
                 <th scope="col">Remove</th>
+                <th scope="col">Update</th>
             </tr>
         </thead>
         <tbody ng-repeat="rowContent in rows">
@@ -34,7 +43,7 @@
                 <td ng-click="checkboxClick(rowContent)">
                     <input type="checkbox">
                 </td>
-                <td ng-style="rowContent.style">
+                <td ng-class="rowContent.classStyle">
                     {{rowContent.task}}
                 </td>
                 <td>
@@ -42,6 +51,9 @@
                 </td>
                 <td ng-click="rows.pop(rowContent)">
                     <button> Remove</button>
+                </td>
+                <td>
+                    <input type="text" ng-model="rowContent.task">
                 </td>
             </tr>
         </tbody>

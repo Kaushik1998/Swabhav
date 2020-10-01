@@ -1,13 +1,6 @@
 let todo = angular.module("todoApp", []);
-
-let strikethroughStyle = `{
-    text-decoration:"strikethorugh"
-}`;
-
-let strikethroughStyleNone = `{
-    text-decoration:"none"
-}`;
-
+let strikethroughAdd = "strikeThroughAdd";
+let strikethroughRemove = "strikeThroughRemove";
 todo.controller("todoCtrl", function ($scope) {
   $scope.rows = [];
 
@@ -19,7 +12,7 @@ todo.controller("todoCtrl", function ($scope) {
         checkbox,
         $scope.task,
         new Date().toDateString(),
-        strikethroughStyleNone
+        strikethroughRemove
       )
     );
   };
@@ -27,12 +20,12 @@ todo.controller("todoCtrl", function ($scope) {
   $scope.checkboxClick = function (rowContent) {
     if (rowContent.done) {
       rowContent.done = false;
-      console.log("Task Undone" + rowContent.task);
-      rowContent.style = strikethroughStyle;
+      rowContent.classStyle = strikethroughRemove;
+      console.log("Task Undone" + rowContent.classStyle);
     } else {
       rowContent.done = true;
-      console.log("Task done" + rowContent.task);
-      rowContent.style = strikethroughStyleNone;
+      rowContent.classStyle = strikethroughAdd;
+      console.log("Task done" + rowContent.classStyle);
     }
   };
 });
@@ -43,12 +36,12 @@ todo.directive("column", function () {
   };
 });
 
-function column(checkbox, task, time, style) {
+function column(checkbox, task, time, classStyle) {
   return {
     checkbox,
     done: false,
     task,
     time,
-    style,
+    classStyle,
   };
 }
