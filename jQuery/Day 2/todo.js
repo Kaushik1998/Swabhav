@@ -3,6 +3,7 @@
     const key = localStorage.key(i);
     const value = localStorage.getItem(key);
     const li = document.createElement("li");
+    li.classList.add("list-group-item");
     li.innerHTML = key;
     li.setAttribute("onclick", "checkMyStatus(this)");
     // if (value == "undone") {
@@ -18,7 +19,9 @@
 
 $("#insert").click(function (e) {
   e.preventDefault();
-  localStorage.setItem($("#task").val(), "undone");
+  if ($("#task").val()) {
+    localStorage.setItem($("#task").val(), "undone");
+  }
   location.reload();
 });
 

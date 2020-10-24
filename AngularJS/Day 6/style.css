@@ -1,0 +1,10 @@
+.ballBackground {
+    background-color: rgb(255, 125, 151);
+}
+
+.ball {
+    background-color: rgb(99, 99, 240);
+    border-radius: 50%;
+    min-width: 5%;
+    max-width: 5%;
+}

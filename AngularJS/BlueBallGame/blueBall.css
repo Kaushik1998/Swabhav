@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+.myContainer {}
+
+.ball {
+    width: 6em;
+    height: 6em;
+    background-color: greenyellow;
+    margin: 5px;
+    border-radius: 50%;
+}

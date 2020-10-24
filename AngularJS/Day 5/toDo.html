@@ -43,7 +43,7 @@
                 <td ng-click="checkboxClick(rowContent)">
                     <input type="checkbox">
                 </td>
-                <td ng-class="rowContent.classStyle">
+                <td ng-class="[rowContent.classStyle]">
                     {{rowContent.task}}
                 </td>
                 <td>

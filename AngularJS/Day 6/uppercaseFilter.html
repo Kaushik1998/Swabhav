@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='root'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uppercase Custom Filter</title>
+    <script src="angularjs.js"></script>
+</head>
+
+<body>
+    <div ng-controller='rootCtrl'>
+        <div ng-repeat='student in students'>
+            <h3> {{student.name | myUppercaseFilter}}</h3>
+            <h3>{{student.rollNumber}}</h3>
+            <h3>{{student.cgpa}}</h3>
+        </div>
+    </div>
+    <script src="uppercaseFilter.js"></script>
+</body>
+
+</html>

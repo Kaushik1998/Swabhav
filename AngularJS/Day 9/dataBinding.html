@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2 way</title>
+    <script src="angularjs.js"></script>
+    <style>
+      .angular{
+          
+          background-color: {{backgroundClr}};
+          font-size:{{fontSize}}px;
+          text-content:{{fontSize}};
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="angular">This is to be modified</h1>
+    <label for="background">Background</label>
+    <input type="text" ng-model="backgroundClr" id="background" />
+    <label for="">Font Size</label>
+    <input type="number" ng-model="fontSize" />
+
+  </body>
+</html>

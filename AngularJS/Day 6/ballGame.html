@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='ballGameApp'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Game</title>
+    <script src="angularjs.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller='ballGameCtrl'>
+    <div class="card text-center">
+        <div class="card-body">
+            <h1 class="card-title">Ball Game</h1>
+            <div ng-hide="gameStarted">
+                <ul>
+                    <li>Lorem ipsum dolor sit amet</li>
+                    <li>Consectetur adipiscing elit</li>
+                    <li>Nulla volutpat aliquam velit
+                        <ul>
+                            <li>Phasellus iaculis neque</li>
+                            <li>Ac tristique libero volutpat at</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div ng-hide='!gameStarted'>
+                <div>
+                    <div ng-repeat="ball in balls">
+                        <div class="row">
+                            <div class="ballBackground col-lg-2">
+                                <div class="ball ">Ball</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button type="button" class="btn btn-dark" ng-click="toggleStartGame()">Start Game</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
+    <script src="ballGame.js"></script>
+</body>
+
+</html>

@@ -63,7 +63,6 @@ li {
 
 li:hover {
     position: relative;
-    bottom: 10px;
     background-color: darkslateblue;
     color: white;
     border: #F4DC12 dashed;
