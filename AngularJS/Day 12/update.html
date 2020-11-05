@@ -1,0 +1,39 @@
+<input
+  type="text"
+  class="form-control"
+  placeholder="ID"
+  ng-model="existingStudent.id"
+/>
+<input
+  type="text"
+  class="form-control"
+  placeholder="Name"
+  ng-model="existingStudent.name"
+/>
+<input
+  type="text"
+  class="form-control"
+  placeholder="Age"
+  ng-model="existingStudent.age"
+/>
+<input
+  type="text"
+  class="form-control"
+  placeholder="Roll No"
+  ng-model="existingStudent.rollNo"
+/>
+<input
+  type="text"
+  class="form-control"
+  placeholder="Email"
+  ng-model="existingStudent.email"
+/>
+<div class="input-group-text">
+  <div class="input-group-prepend">
+    <span class="mr-2">Male</span>
+  </div>
+  <input type="checkbox" ng-model="existingStudent.isMale" />
+</div>
+<button type="button" class="btn btn-primary" ng-click="updateStudent()">
+  Update
+</button>

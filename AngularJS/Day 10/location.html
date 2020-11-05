@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Service</title>
+    <script src="angularjs.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <body ng-controller="ctrl">
+    <div ng-show="homePage">
+      <button ng-click="home()">Home</button>
+      <button ng-click="contact()">Contact</button>
+      <button ng-click="about()">About</button>
+    </div>
+    <div ng-show="home">
+      <h1>Home</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+        voluptates officia necessitatibus quaerat amet temporibus dolorum, unde
+        doloribus provident earum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi fuga ex
+        illum ad hic, consectetur a amet explicabo laboriosam ratione
+        reprehenderit maxime voluptate ipsam voluptatum quaerat accusantium
+        blanditiis assumenda ut.
+      </p>
+    </div>
+
+    <div ng-show="contact">
+      <h1>Contact</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quo
+        corporis ad necessitatibus aut velit officiis illo blanditiis quae.
+        Aliquid!
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa, non.
+        Sunt ea, voluptas assumenda voluptatem illo temporibus ex officia.
+        Voluptatibus, dignissimos velit fuga facilis nisi illum aut temporibus
+        quis iure.
+      </p>
+    </div>
+
+    <div ng-show="about">
+      <h1>About</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa voluptatem
+        ut fuga quaerat dolores commodi perspiciatis ratione ullam aperiam
+        ipsum!
+      </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita unde
+        laboriosam at nesciunt iusto, non beatae sunt deserunt dolores quos
+        nemo? Labore iure eos magni deserunt enim aliquid? Laudantium,
+        asperiores.
+      </p>
+    </div>
+
+    <!-- <script src="location.js"></script> -->
+    <script src="locationHash.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

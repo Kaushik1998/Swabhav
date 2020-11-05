@@ -2,7 +2,7 @@ let todo = angular.module("todoApp", []);
 let strikethroughAdd = "strikeThroughAdd";
 let strikethroughRemove = "strikeThroughRemove";
 todo.controller("todoCtrl", function ($scope) {
-  $scope.rows = [];
+  $scope.rows = [new column(null, "Buy Milk", "10:30", "none"),new column(null, "Buy Car", "10:34", "none")];
 
   $scope.addTask = function () {
     let checkbox = document.createElement("input");

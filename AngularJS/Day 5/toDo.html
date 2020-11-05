@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="todoApp">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do List</title>
     <script src="angularjs.js"></script>
     <style>
-        .container-fluid {
-            margin: 2%;
-        }
+      .container-fluid {
+        margin: 2%;
+      }
 
-        .strikethroughAdd {
-            text-decoration: line-through !important; 
-        }
+      .strikethroughAdd {
+        text-decoration: line-through !important;
+      }
 
-        .strikethroughRemove {
-            text-decoration: none;
-        }
+      .strikethroughRemove {
+        text-decoration: none;
+      }
     </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
 
-<body ng-controller="todoCtrl">
+  <body ng-controller="todoCtrl">
     <div class="d-flex justify-content-center container-fluid">
-        <label for="task" class="display-4">Add Task</label>
-        <input type="text" class="input-group-text" ng-model="task">
-        <button ng-click="addTask()" class="btn btn-info">Submit</button>
+      <label for="task" class="display-4">Add Task</label>
+      <input type="text" class="input-group-text" ng-model="task" />
+      <button ng-click="addTask()" class="btn btn-info">Submit</button>
     </div>
     <table class="table text-center table-dark table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Done</th>
-                <th scope="col">Task</th>
-                <th scope="col">Time</th>
-                <th scope="col">Remove</th>
-                <th scope="col">Update</th>
-            </tr>
-        </thead>
-        <tbody ng-repeat="rowContent in rows">
-            <tr>
-                <td ng-click="checkboxClick(rowContent)">
+      <thead>
+        <tr>
+          <th scope="col">Done</th>
+          <th scope="col">Task</th>
+          <th scope="col">Time</th>
+          <th scope="col">Remove</th>
+          <th scope="col">Update</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="rowContent in rows">
+        <tr>
+          <td ng-click="checkboxClick(rowContent)">
                     <input type="checkbox">
                 </td>
                 <td ng-class="[rowContent.classStyle]">
@@ -55,16 +57,15 @@
                 <td>
                     <input type="text" ng-model="rowContent.task">
                 </td>
-            </tr>
-        </tbody>
-        <tbody>
-        </tbody>
+          <column></column>
+        </tr>
+      </tbody>
+      <tbody></tbody>
     </table>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
     <script src="todo.js"></script>
-</body>
-
+  </body>
 </html>

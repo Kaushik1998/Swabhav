@@ -1,21 +1,31 @@
-let root = angular.module("root", []);
+let student = angular.module("student", ["ngRoute"]);
 
-// root.service("getDataFromStudentAPI", [
-//   "$http",
-//   function (http) {
-//     this.loadStudent = function () {
-//       let student = { nani: "Nani" };
-//       http
-//         .get("http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students/")
-//         .then(function (response) {
-//           this.student = response.data;
-//         });
-//       return student;
-//     };
-//   },
-// ]);
+student.config([
+  "$routeProvider",
+  function (route) {
+    route.when("/", {
+      templateUrl: "./studentLanding.html",
+    });
+    route.when("/student", {
+      templateUrl: "./student.html",
+      controller: "studentCtrl",
+    });
+    route.when("/add", {
+      templateUrl: "./add.html",
+      controller: "studentCtrl",
+    });
+    route.when("/update", {
+      templateUrl: "./update.html",
+      controller: "studentCtrl",
+    });
+    route.when("/delete", {
+      templateUrl: "./delete.html",
+      controller: "studentCtrl",
+    });
+  },
+]);
 
-root.factory("studentFactory", [
+student.factory("studentFactory", [
   "$http",
   function (http) {
     let factory = {};
@@ -34,7 +44,15 @@ root.factory("studentFactory", [
   },
 ]);
 
-root.service("httpService", [
+student.controller("studentCtrl", [
+  "$scope",
+  "studentFactory",
+  function (scope, student) {
+    scope.students = student.getStudents();
+  },
+]);
+
+student.service("httpService", [
   "$http",
   function (http) {
     this.addStudent = async function (newStudent) {
@@ -85,7 +103,7 @@ root.service("httpService", [
   },
 ]);
 
-root.controller("ctrl", [
+student.controller("studentCtrl", [
   "$scope",
   "$http",
   "studentFactory",
@@ -93,7 +111,6 @@ root.controller("ctrl", [
   function (scope, http, studentFactory, httpService) {
     scope.loadStudents = function () {
       scope.students = studentFactory.getStudents();
-      console.log(typeof scope.students);
     };
 
     scope.addStudent = function () {

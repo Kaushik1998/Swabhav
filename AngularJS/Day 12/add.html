@@ -1,0 +1,35 @@
+<div class="input-group mb-3">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Name"
+    ng-model="newStudent.name"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Age"
+    ng-model="newStudent.age"
+  />
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Roll No"
+    ng-model="newStudent.rollNo"
+  />
+  <input
+    type="text"
+    class="form-control d-block"
+    placeholder="Email"
+    ng-model="newStudent.email"
+  />
+  <div class="input-group-text">
+    <div class="input-group-prepend">
+      <span class="mr-2">Male</span>
+    </div>
+    <input type="checkbox" ng-model="newStudent.isMale" />
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="addStudent()">
+    Add
+  </button>
+</div>
