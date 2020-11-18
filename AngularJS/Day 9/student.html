@@ -85,7 +85,7 @@
           <th scope="col">Male</th>
         </tr>
       </thead>
-      <tbody ng-repeat="student in students track by $index | orderBy:name">
+      <tbody ng-repeat="student in students track by $index">
         <tr>
           <th scope="row">{{$index}}</th>
           <td>{{student.name}}</td>

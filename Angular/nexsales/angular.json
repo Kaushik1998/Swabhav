@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hello-world": {
+    "nexsales": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hello-world",
+            "outputPath": "dist/nexsales",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hello-world:build"
+            "browserTarget": "nexsales:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hello-world:build:production"
+              "browserTarget": "nexsales:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hello-world:build"
+            "browserTarget": "nexsales:build"
           }
         },
         "test": {
@@ -110,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hello-world:serve"
+            "devServerTarget": "nexsales:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "hello-world:serve:production"
+              "devServerTarget": "nexsales:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "hello-world",
+  "defaultProject": "nexsales",
   "cli": {
-    "analytics": false
+    "analytics": "5d8a2fd3-9d24-46be-9a0d-bbd0f270f7a2"
   }
 }

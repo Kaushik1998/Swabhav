@@ -19,54 +19,57 @@
     <title>Student SPA</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Kaushik</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse text-center" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#"
-              ><button class="btn btn-primary">Home</button></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#student"
-              ><button class="btn btn-primary">Student</button></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#add"
-              ><button class="btn btn-primary">Add</button>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#update"
-              ><button class="btn btn-primary">Update</button>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#delete"
-              ><button class="btn btn-primary">Delete</button>
-            </a>
-          </li>
-        </ul>
-        <form class="form-inline">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-          />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+    <section>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+        <a class="navbar-brand" href="#">Kaushik</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                ><button class="btn btn-primary">Home</button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#student"
+                ><button class="btn btn-primary">Students</button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#add"
+                ><button class="btn btn-primary">Add</button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#update"
+                ><button class="btn btn-primary">Update</button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#delete"
+                ><button class="btn btn-primary">Delete</button></a
+              >
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              ng-model="search"
+            />
+          </form>
+        </div>
+      </nav>
+    </section>
     <div ng-view></div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

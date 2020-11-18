@@ -11,9 +11,9 @@
       <th scope="col">Male</th>
     </tr>
   </thead>
-  <tbody ng-repeat="student in students track by $index">
+  <tbody ng-repeat="student in students | filter : search">
     <tr>
-      <th scope="row">{{$index +1}}</th>
+      <th scope="row">{{$index + 1}}</th>
       <td>{{student.name}}</td>
       <td>{{student.id}}</td>
       <td>{{student.age}}</td>

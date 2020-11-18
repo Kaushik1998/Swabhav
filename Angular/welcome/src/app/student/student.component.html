@@ -1,0 +1,14 @@
+<button (click)="loadStudents()">Load Students</button>
+<div *ngFor="let student of studentList">
+  <h3>
+    {{ student.name }}
+  </h3>
+  <ul>
+    <li>CGPA : {{ student.cgpa }}</li>
+    <li
+      [innerHtml]="student.cgpa"
+      [ngStyle]="{ 'background-color': 'blue' }"
+    ></li>
+    <li>Roll No : {{ student.rollno }}</li>
+  </ul>
+</div>
