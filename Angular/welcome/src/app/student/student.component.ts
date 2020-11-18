@@ -7,17 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./student.component.css'],
 })
 export class StudentComponent implements OnInit {
-  kaushik: IStudent = { name: 'Kaushik', rollno: 91, cgpa: 62 };
-  paras: IStudent = { name: 'Paras', rollno: 23, cgpa: 56 };
-  jayant: IStudent = { name: 'Jayant', rollno: 13, cgpa: 48 };
   studentList: IStudent[] = [];
+  showStudents: boolean = false;
 
   loadStudents() {
-    this.studentList.push(this.kaushik);
-    this.studentList.push(this.paras);
-    this.studentList.push(this.jayant);
+    this.showStudents = !this.showStudents;
   }
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.studentList.push({ name: 'Kaushik', rollno: 91, cgpa: 62 });
+    this.studentList.push({ name: 'Paras', rollno: 23, cgpa: 56 });
+    this.studentList.push({ name: 'Jayant', rollno: 13, cgpa: 48 });
+  }
 }

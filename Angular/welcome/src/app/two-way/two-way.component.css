@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman&display=swap');
+
+* {
+  font-family: 'Goldman', cursive;
+}
+
+.card {
+  margin: 20px;
+  border: 10px black solid;
+}

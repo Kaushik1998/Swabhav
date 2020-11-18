@@ -1,14 +1,35 @@
 <button (click)="loadStudents()">Load Students</button>
-<div *ngFor="let student of studentList">
-  <h3>
-    {{ student.name }}
-  </h3>
-  <ul>
-    <li>CGPA : {{ student.cgpa }}</li>
-    <li
-      [innerHtml]="student.cgpa"
-      [ngStyle]="{ 'background-color': 'blue' }"
-    ></li>
-    <li>Roll No : {{ student.rollno }}</li>
-  </ul>
-</div>
+
+<table class="table" *ngIf="showStudents">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Icon</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll No</th>
+      <th scope="col">CGPA</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let student of studentList; index as index">
+    <tr>
+      <td>
+        {{ index + 1 }}
+      </td>
+      <td>
+        <img
+          src="../../assets/resources/student.png"
+          [ngStyle]="{'width':'85px'}"
+        />
+      </td>
+      <td>
+        {{ student.name }}
+      </td>
+      <td>
+        {{ student.rollno }}
+      </td>
+      <td>
+        {{ student.cgpa }}
+      </td>
+    </tr>
+  </tbody>
+</table>

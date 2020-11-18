@@ -1,0 +1,10 @@
+.myContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.myBall {
+  border-radius: 50%;
+  height: 50px;
+}
