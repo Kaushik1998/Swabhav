@@ -11,19 +11,26 @@ export class BlueBallComponent implements OnInit {
   readonly DEFAULT_BALLS: number = 20;
   readonly DEFAULT_ATTEMPTS: number = 4;
   readonly DEFAULT_RANDOM_NUMBER = 0;
+  readonly WELCOME_MESSAGE = 'Welcome to the Game..!!';
 
   balls: IBall[] = [];
   maxBalls: number = this.DEFAULT_BALLS;
   attempts: number = this.DEFAULT_ATTEMPTS;
   randomNumber: number = this.DEFAULT_RANDOM_NUMBER;
-  gameRunning: boolean = false;
-  ballsClicked: number = 0;
+  showRules: boolean = true;
+  showRestartButton: boolean = false;
+  showBalls: boolean = false;
+  message: string = this.WELCOME_MESSAGE;
 
   startGame() {
-    this.gameRunning = true;
-    this.ballsClicked = 0;
+    this.showRules = false;
+    this.showBalls = true;
     this.generateRandomNumber();
     this.generateBalls();
+    this.attempts = this.DEFAULT_ATTEMPTS;
+    this.message = this.WELCOME_MESSAGE;
+
+    console.log('Winning Ball : ' + this.randomNumber);
   }
   generateRandomNumber() {
     this.randomNumber = Math.floor(Math.random() * this.maxBalls);
@@ -72,23 +79,34 @@ export class BlueBallComponent implements OnInit {
     }
   }
 
-  clickBall(ball: IBall) {
-    ball.currentColor = ball.bgColor;
-    this.ballsClicked++;
-  }
+  clickBall(ball: IBall) {}
   checkGame(ball: IBall) {
-    this.clickBall(ball);
-    if (ball.bgColor == 'blue') {
-      alert('You have won');
-      this.endGame();
-    }
-    if (this.ballsClicked > this.attempts) {
-      alert('Game is over\nYou Lost');
+    if (this.attempts > 0) {
+      ball.currentColor = ball.bgColor;
+      this.attempts--;
+
+      if (ball.bgColor == 'yellow' || ball.bgColor == 'red') {
+        this.message = 'You are very close';
+      } else {
+        this.message = 'Keep going';
+      }
+      if (ball.bgColor == 'blue') {
+        this.message = 'Congrats you found Blue Ball....!';
+        this.endGame();
+      }
+    } else if (this.attempts == 0) {
+      this.message = 'Max attempts exceeded';
       this.endGame();
     }
   }
   endGame() {
-    this.gameRunning = false;
+    let winnerBall: IBall = this.balls[this.randomNumber];
+    winnerBall.currentColor = winnerBall.bgColor;
+    this.showRestartButton = true;
+  }
+
+  restartGame() {
+    location.reload();
   }
   constructor() {}
 

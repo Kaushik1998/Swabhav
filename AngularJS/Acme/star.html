@@ -1,0 +1,13 @@
+<img
+  ng-repeat="x in [].constructor(getNumber(product.starRating)) track by $index"
+  src="resources/fullstar.png"
+  alt=""
+  style="width: 20px; height: 20px"
+/>
+
+<img
+  ng-if="product.starRating%1===0.5"
+  src="resources/halfstar.png"
+  alt=""
+  style="width: 20px; height: 20px"
+/>

@@ -9,6 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TwoWayComponent } from './two-way/two-way.component';
 import { SnakeComponent } from './snake/snake.component';
 import { SnakeCasePipe } from './snake-case.pipe';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './parent/child/child.component';
+import { StarComponent } from './parent/star/star.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { SnakeCasePipe } from './snake-case.pipe';
     TwoWayComponent,
     SnakeComponent,
     SnakeCasePipe,
+    ParentComponent,
+    ChildComponent,
+    StarComponent,
   ],
   imports: [BrowserModule, NgbModule, FormsModule],
   providers: [],

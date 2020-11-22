@@ -1,0 +1,33 @@
+.container {
+  padding: 0%;
+}
+
+.landingContainer {
+  border: #3a86c4 2px solid;
+  border-radius: 1rem;
+}
+
+.head {
+  color: azure;
+  background-color: #3a86c4;
+  border-top-left-radius: 0.9rem;
+  border-top-right-radius: 0.9rem;
+  padding: 1rem;
+}
+
+.bod {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter {
+  margin: 2%;
+  margin-bottom: 2%;
+}
+
+.productBody {
+  display: flex;
+  justify-content: space-between;
+}

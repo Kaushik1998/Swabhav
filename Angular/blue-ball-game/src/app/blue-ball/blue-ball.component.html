@@ -1,17 +1,18 @@
-<div *ngIf="!gameRunning">
+<div *ngIf="showRules">
   <div class="jumbotron">
     <div class="container myContainer">
       <h1 class="display-4 text-center">Game Rules</h1>
       <div>
         <ul class="lead mx-5">
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit amet.</li>
-          <li>Lorem ipsum dolor sit.</li>
+          <li>Find the Blue Ball from set of {{ maxBalls }} balls.</li>
+          <li>Click on the balls to guess.</li>
+          <li>If the ball turns Yellow the Blue ball is before to it.</li>
+          <li>If the ball turns Red the Blue ball is next it.</li>
+          <li>You have maximum of {{ attempts }} attempts</li>
         </ul>
       </div>
       <div>
-        <button class="btn btn-primary" (click)="startGame()">
+        <button class="btn-primary" (click)="startGame()">
           Start Game
         </button>
       </div>
@@ -19,16 +20,25 @@
   </div>
 </div>
 
-<div *ngIf="gameRunning">
-  <div class="row row-cols-6 justify-content-center">
+<div *ngIf="showBalls" class="jumbotron text-center">
+  <h1 class="display-3">Blue Ball Game</h1>
+  <h3>Attempts : {{ attempts }}</h3>
+  <div [id]="'balls'">
     <div *ngFor="let ball of balls">
-      <div
-        class="col-12 myBall container-fluid"
-        [ngStyle]="{ 'background-color': ball.currentColor }"
+      <button
+        class="btn"
+        [style.background-color]="ball.currentColor"
+        [disabled]="ball.disabled"
         (click)="checkGame(ball)"
       >
         {{ ball.id }}
-      </div>
+      </button>
     </div>
+  </div>
+  <h3 class="display-4">
+    {{ message }}
+  </h3>
+  <div *ngIf="showRestartButton">
+    <button (click)="restartGame()" class="btn btn-primary">Restart</button>
   </div>
 </div>

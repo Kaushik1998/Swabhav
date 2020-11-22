@@ -1,0 +1,43 @@
+<div class="productContainer container">
+  <div class="head">
+    <h2>Product Detail : {{product.product}}</h2>
+  </div>
+  <div class="productBody">
+    <div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <td>{{product.name}}</td>
+          </tr>
+          <tr>
+            <th>Code</th>
+            <td>{{product.code}}</td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td>{{product.description}}</td>
+          </tr>
+          <tr>
+            <th>Availability</th>
+            <td>{{product.available}}</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td>{{product.price | currency}}</td>
+          </tr>
+          <tr>
+            <th>Rating</th>
+            <td>
+              <star></star>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <img class="" src="{{product.img}}" alt="" style="height: 20rem" />
+  </div>
+  <div class="footer">
+    <a href="#productList"><button>Back</button></a>
+  </div>
+</div>

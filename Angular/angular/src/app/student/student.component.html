@@ -1,0 +1,35 @@
+<button (click)="loadStudents()">Load Students</button>
+
+<table class="table" *ngIf="showStudents">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Icon</th>
+      <th scope="col">Name</th>
+      <th scope="col">Roll No</th>
+      <th scope="col">CGPA</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let student of studentList; index as index">
+    <tr>
+      <td>
+        {{ index + 1 }}
+      </td>
+      <td>
+        <img
+          src="../../assets/resources/student.png"
+          [ngStyle]="{'width':'85px'}"
+        />
+      </td>
+      <td>
+        {{ student.name }}
+      </td>
+      <td>
+        {{ student.rollno }}
+      </td>
+      <td>
+        {{ student.cgpa }}
+      </td>
+    </tr>
+  </tbody>
+</table>

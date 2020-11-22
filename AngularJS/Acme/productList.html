@@ -1,0 +1,56 @@
+<div class="landingContainer container">
+  <div class="head">
+    <h2>Product List</h2>
+  </div>
+  <div class="bod">
+    <div class="input-group flex-nowrap">
+      <input
+        type="text"
+        class="form-control filter"
+        placeholder="Filter"
+        ng-model="search"
+      />
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            <button class="btn btn-primary" ng-click="toggleImage()">
+              {{buttonMessage}}
+            </button>
+          </th>
+          <th scope="col">Product</th>
+          <th scope="col">Code</th>
+          <th scope="col">Available</th>
+          <th scope="col">Price</th>
+          <th scope="col">Rating</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="product in products | filter:search">
+        <tr>
+          <td>
+            <img
+              src="resources/logo.jpg"
+              alt=""
+              ng-show="showImages"
+              class="img-fluid text-center"
+              style="max-width: 50px"
+            />
+          </td>
+          <td>
+            <a href="#product" ng-click="openProduct(product)"
+              >{{product.productName}}</a
+            >
+          </td>
+          <td>{{product.productCode}}</td>
+          <td>{{product.releaseDate}}</td>
+          <td>{{product.price | currency}}</td>
+          <!-- <td>{{product.rating}}</td> -->
+          <td>
+            <star></star>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

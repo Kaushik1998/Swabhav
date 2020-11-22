@@ -1,0 +1,41 @@
+<!-- <div class="container">
+  <div class="card">
+    <div class="card-header display-4">Parent</div>
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Input from Parent"
+          [(ngModel)]="message"
+        />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="On Color for button"
+          [(ngModel)]="onColor"
+        />
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Off Color for button"
+          [(ngModel)]="offColor"
+        />
+      </div>
+    </div>
+    <div class="card-footer">
+      <h5 class="card-title">Data from Child : {{ variable }}</h5>
+    </div>
+  </div>
+</div>
+
+<child
+  [input]="message"
+  [onColor]="onColor"
+  [offColor]="offColor"
+  (outputEvent)="inputEventFromChild($event)"
+></child> -->
+
+<div class="container">
+  <star [stars]="5"></star>
+</div>
