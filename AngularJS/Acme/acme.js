@@ -72,9 +72,9 @@ root.controller("productListController", [
     // ];
 
     product.then((data) => {
-      scope.products = data;
       return data;
     });
+
     console.log(scope.products);
     scope.showImages = true;
 
