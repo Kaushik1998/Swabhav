@@ -1,5 +1,6 @@
+import { NumberApiCallService } from './number-api-call.service';
 import { LocalStorageService } from "./local-storage.service";
-import { NumberApiCallService } from "./../number-api-call.service";
+
 import { Component, OnInit } from "@angular/core";
 import { IEntries } from "./ientries";
 import * as moment from "moment";

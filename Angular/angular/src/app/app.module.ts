@@ -24,7 +24,7 @@ import { HomepageComponent } from "./homepage/homepage.component";
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
