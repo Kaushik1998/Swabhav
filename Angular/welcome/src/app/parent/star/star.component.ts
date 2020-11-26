@@ -1,6 +1,7 @@
 import { Star } from "./star.enum";
 import { IStar } from "./IStar";
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+
 @Component({
   selector: "star",
   templateUrl: "./star.component.html",

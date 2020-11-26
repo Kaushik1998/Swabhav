@@ -22,6 +22,10 @@ student.config([
       templateUrl: "./delete.html",
       controller: "studentCtrl",
     });
+    route.when("/deleteAll", {
+      templateUrl: "./deleteAll.html",
+      controller: "studentCtrl",
+    });
   },
 ]);
 
@@ -122,14 +126,21 @@ student.controller("studentCtrl", [
       });
     };
 
-    scope.updateStudent = function () {
-      let successStatus = httpService.updateStudent(scope.existingStudent);
-      successStatus.then(() => {
-        {
-          alert(`Update student\nID : ${scope.existingStudent.id}`);
-          console.log("Success Update Student");
-          scope.loadStudents();
-        }
+    // scope.updateStudent = function () {
+    //   let successStatus = httpService.updateStudent(scope.existingStudent);
+    //   successStatus.then(() => {
+    //     {
+    //       alert(`Update student\nID : ${scope.existingStudent.id}`);
+    //       console.log("Success Update Student");
+    //       scope.loadStudents();
+    //     }
+    //   });
+    // };
+
+    scope.deleteAll = function () {
+      scope.students.forEach((student) => {
+        httpService.deleteStudent(student.id);
+        console.log("Attempted Delete " + student.id);
       });
     };
 
@@ -137,7 +148,7 @@ student.controller("studentCtrl", [
       let successStatus = httpService.deleteStudent(scope.deleteStudent);
       successStatus.then(() => {
         {
-          alert(`Deleted student\nID : ${scope.deleteStudent}`);
+          console.log(`Deleted student\nID : ${scope.deleteStudent}`);
           console.log("Success Deleted Student");
           scope.loadStudents();
         }

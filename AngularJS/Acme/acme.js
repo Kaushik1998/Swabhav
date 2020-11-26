@@ -43,13 +43,19 @@ root.factory("productFactory", function () {
   return product;
 });
 
-root.factory("products", function () {
-  let products = fetch("./resources/products.jsonx").then((data) => {
-    let finalJson = data.json().then((data) => {
-      return data;
-    });
-    return finalJson;
-  });
+root.service("products", function () {
+  let products = {};
+  products.getProducts = async function () {
+    let finalProduct = await fetch("./resources/products.jsonx").then(
+      (data) => {
+        let finalJson = data.json().then((data) => {
+          return data;
+        });
+        return finalJson;
+      }
+    );
+    return finalProduct;
+  };
   return products;
 });
 
@@ -65,16 +71,13 @@ root.controller("productListController", [
   "$rootScope",
   "products",
   function (scope, rootScope, product) {
-    // scope.products = [
-    //   product.generate("Cartoon"),
-    //   product.generate("Anime", "Naruto"),
-    //   product.generate("Movies", "Ksn-553"),
-    // ];
-
-    product.then((data) => {
-      return data;
-    });
-
+    scope.loadProducts = function () {
+      let test = product.getProducts();
+      test.then((data) => {
+        scope.products = data;
+      });
+    };
+    scope.loadProducts();
     console.log(scope.products);
     scope.showImages = true;
 

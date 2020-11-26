@@ -12,6 +12,8 @@ import { SnakeCasePipe } from './snake-case.pipe';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './parent/child/child.component';
 import { StarComponent } from './parent/star/star.component';
+import { NumberApiComponent } from './number-api/number-api.component';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { StarComponent } from './parent/star/star.component';
     ParentComponent,
     ChildComponent,
     StarComponent,
+    NumberApiComponent,
   ],
-  imports: [BrowserModule, NgbModule, FormsModule],
+  imports: [BrowserModule, NgbModule, FormsModule, HttpClient],
   providers: [],
   bootstrap: [AppComponent],
 })

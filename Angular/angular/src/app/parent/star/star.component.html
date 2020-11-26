@@ -1,9 +1,0 @@
-<!-- <i *ngFor="let i of [].constructor(stars)" class="fa fa-star" (click)="(0)"></i> -->
-<i
-  *ngFor="let star of starArray; let i = index"
-  [ngClass]="star.class"
-  (click)="starClicked(i)"
-  (dblclick)="starDoubleClicked(i)"
-  ngbTooltip="{{ starRating }}"
->
-</i>

@@ -1,33 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
-import { AppComponent } from './app.component';
-import { HelloComponentComponent } from './hello-component/hello-component.component';
-import { StudentComponent } from './student/student.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TwoWayComponent } from './two-way/two-way.component';
-import { SnakeComponent } from './snake/snake.component';
-import { SnakeCasePipe } from './snake-case.pipe';
-import { ParentComponent } from './parent/parent.component';
-import { ChildComponent } from './parent/child/child.component';
-import { StarComponent } from './parent/star/star.component';
-import { ObservaleComponent } from './observale/observale.component';
+import { AppRoutingModule, routingComponents } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+
+import { NavbarComponent } from "./navbar/navbar.component";
+import { ComponentExperimentComponent } from "./component-experiment/component-experiment.component";
+import { HomepageComponent } from "./homepage/homepage.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponentComponent,
-    StudentComponent,
-    TwoWayComponent,
-    SnakeComponent,
-    SnakeCasePipe,
-    ParentComponent,
-    ChildComponent,
-    StarComponent,
-    ObservaleComponent,
+    routingComponents,
+    NavbarComponent,
+    ComponentExperimentComponent,
+    HomepageComponent,
   ],
-  imports: [BrowserModule, NgbModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
