@@ -1,23 +1,18 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import { BrowserModule } from "@angular/platform-browser";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { AcmeModule } from "./acme/acme.module";
 import { AppRoutingModule, routingComponents } from "./app-routing.module";
-import { AppComponent } from "./app.component";
 
-import { NavbarComponent } from "./navbar/navbar.component";
-import { ComponentExperimentComponent } from "./component-experiment/component-experiment.component";
+import { AppComponent } from "./app.component";
 import { HomepageComponent } from "./homepage/homepage.component";
+import { SharedModule } from "./shared/shared.module";
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    routingComponents,
-    NavbarComponent,
-    ComponentExperimentComponent,
-    HomepageComponent,
-  ],
+  declarations: [AppComponent, routingComponents, HomepageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,6 +20,9 @@ import { HomepageComponent } from "./homepage/homepage.component";
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    AcmeModule,
+    SharedModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
