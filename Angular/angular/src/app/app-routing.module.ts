@@ -1,3 +1,4 @@
+import { PublicComponentsComponent } from "./public-components/public-components.component";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -21,6 +22,8 @@ const routes: Routes = [
   },
   { path: "studentApi", component: StudentApiComponent },
   { path: "numbersApi", component: NumberApiComponent },
+  { path: "public", component: PublicComponentsComponent },
+  { path: "public/:file", component: PublicComponentsComponent },
   { path: "acme", component: AcmeRootComponent, children: acmeRoutes },
   {
     path: "studentSpa",
@@ -57,4 +60,5 @@ export const routingComponents = [
   DeleteStudentComponent,
   StudentSpaStudentsComponent,
   StudentSpaLandingPageComponent,
+  PublicComponentsComponent,
 ];
