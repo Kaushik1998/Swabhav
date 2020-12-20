@@ -13,7 +13,7 @@ const swaggerOptions = {
       contact: {
         name: "Kaushik Nippanikar",
       },
-      servers: [`http://localhost:5000`],
+      servers: [`http://localhost:${port}`],
     },
   },
   // ['.routes/*.js']
