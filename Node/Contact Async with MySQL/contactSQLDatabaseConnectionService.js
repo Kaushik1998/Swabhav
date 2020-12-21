@@ -47,10 +47,10 @@ module.exports = class ContactDatabaseConnectionService {
     });
   }
 
-  addContact(name, contact) {
+  addContact(newContact) {
     let promise = new Promise((resolve, reject) => {
       let query = `INSERT INTO Contacts (name, number) VALUES (?, ?)`;
-      this.con.query(query, [name, contact], function (err, result) {
+      this.con.query(query, [newContact.name, newContact.contact], function (err, result) {
         if (err) reject(err);
         resolve(result);
       });
@@ -70,10 +70,6 @@ module.exports = class ContactDatabaseConnectionService {
       if (err) throw err;
       console.log(`Using database ${databaseName}`);
     });
-  }
-
-  endConnection() {
-    this.con.end();
   }
 
   clearTable() {

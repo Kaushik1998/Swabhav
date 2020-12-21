@@ -1,4 +1,5 @@
-let Database = require("./contactSQLDatabaseConnectionService");
+// let Database = require("./contactSQLDatabaseConnectionService");
+let Database = require("./contactMongoDbConnectionService");
 
 module.exports = class ContactController {
   constructor() {
@@ -34,17 +35,15 @@ module.exports = class ContactController {
   };
 
   addContact = (req, res, next) => {
-    let name = req.body.name;
-    let contact = req.body.contact;
-    if (name && contact) {
+    let { name, contact, address } = req.query;
+    if (name && contact && address) {
       this.db
-        .addContact(name, contact)
+        .addContact({ name, contact, address })
         .then((result) => {
           let id = result["insertId"];
           res.status(200).send({ id });
         })
         .catch((err) => {
-          console.log("Throwing error");
           res.status(400).send(err);
         });
     }

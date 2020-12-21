@@ -1,35 +1,80 @@
 const url = `mongodb+srv://root:root@cluster0.iyeol.mongodb.net/<dbname>?retryWrites=true&w=majority`;
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectID } = require("mongodb");
 
 module.exports = class MongoDBService {
   url = `mongodb+srv://root:root@cluster0.iyeol.mongodb.net/<dbname>?retryWrites=true&w=majority`;
-  collection = null;
+  mongoDb = null;
+  myDatabase = null;
+  myCollection = null;
   constructor() {}
 
-  async startConnection() {
-    let collection = null;
+  startConnection = async () => {
+    let mongoDb = null;
     await MongoClient.connect(url, {
       useUnifiedTopology: true,
     }).then((client) => {
-      this.database = client.db("Swabhav");
-      collection = this.database.collection("Student");
+      // this.database = client.db("Swabhav");
+      // collection = this.database.collection("Student");
+      mongoDb = client;
     });
-    return collection;
-  }
+    return mongoDb;
+  };
 
-  async getContacts() {
-    this.collection = this.collection || (await this.startConnection());
+  initializeDatabaseVariables = async () => {
+    try {
+      this.mongoDb = this.mongoDb || (await this.startConnection());
+      this.myDatabase = this.myDatabase || this.mongoDb.db("Swabhav");
+      this.myCollection =
+        this.myCollection || this.myDatabase.collection("Student");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  getContacts = async () => {
+    await this.initializeDatabaseVariables();
     let contacts = null;
-    await this.collection
+    await this.myCollection
       .find()
       .toArray()
       .then((results) => {
         contacts = results;
-      })
-      .catch((error) => console.error(error));
+      });
     return contacts;
-  }
+  };
 
-  addContact = (name, contact) => {
+  addContact = async (newContact) => {
+    await this.initializeDatabaseVariables();
+    let insertId = null;
+    this.myCollection.insertOne(newContact).then((result) => {
+      insertId = result;
+    });
+    return insertId;
+  };
+
+  getContactById = async (id) => {
+    await this.initializeDatabaseVariables();
+    let desiredContact = null;
+    await this.myCollection
+      .find({ _id: new ObjectID(id) })
+      .toArray()
+      .then((results) => {
+        desiredContact = results;
+      });
+    return desiredContact;
+  };
+
+  clearTable = async () => {
+    await this.initializeDatabaseVariables();
+    return await this.myCollection.remove().then((result) => {
+      return result;
+    });
+  };
+
+  endConnection = async () => {
+    await this.initializeDatabaseVariables();
+    await this.mongoDb.close().then((r) => {
+      console.log("Ending");
+    });
   };
 };
