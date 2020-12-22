@@ -2,10 +2,9 @@ let Mongo = require("./contactMongoDbConnectionService");
 let m = new Mongo();
 
 let n = {
-  name: "Kaushik",
-  contact: 8779395779,
-  address: ["Malad", "Mumbai"],
+  name: "New Await",
+  contact: 1113,
+  address: ["Japan", "Bangkok"],
 };
-// m.addContact(n);
+m.addContact(n).then((res) => console.log(res));
 // m.getContacts().then((r) => console.log(r));
-console.log(m.clearTable());

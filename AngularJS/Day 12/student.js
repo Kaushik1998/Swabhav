@@ -126,17 +126,6 @@ student.controller("studentCtrl", [
       });
     };
 
-    // scope.updateStudent = function () {
-    //   let successStatus = httpService.updateStudent(scope.existingStudent);
-    //   successStatus.then(() => {
-    //     {
-    //       alert(`Update student\nID : ${scope.existingStudent.id}`);
-    //       console.log("Success Update Student");
-    //       scope.loadStudents();
-    //     }
-    //   });
-    // };
-
     scope.deleteAll = function () {
       scope.students.forEach((student) => {
         httpService.deleteStudent(student.id);

@@ -40,13 +40,14 @@ module.exports = class MongoDBService {
       .then((results) => {
         contacts = results;
       });
+    console.log(contacts);
     return contacts;
   };
 
   addContact = async (newContact) => {
     await this.initializeDatabaseVariables();
     let insertId = null;
-    this.myCollection.insertOne(newContact).then((result) => {
+    await this.myCollection.insertOne(newContact).then((result) => {
       insertId = result;
     });
     return insertId;
