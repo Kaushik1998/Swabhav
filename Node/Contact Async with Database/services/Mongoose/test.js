@@ -13,6 +13,14 @@ let kaushik = new Contact({
 
 let m = new Mongo();
 
-m.addContact(kaushik)
+m.addContact({
+  name: {
+    firstName: "Kaushik",
+  },
+  address: {
+    city: "Mumbai",
+    state: "Maharastra",
+  },
+})
   .then((res) => console.log(res))
   .catch((err) => console.log(err));

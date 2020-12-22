@@ -12,18 +12,20 @@ const contactSchema = mongoose.Schema({
     {
       city: {
         type: String,
-        required: true,
       },
       state: {
         type: String,
-        required: true,
       },
       building: String,
       street: String,
+      roomNo: String,
     },
   ],
   profilePicture: Buffer,
-  contact: Number,
+  contact: {
+    type: Number,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Contact", contactSchema);

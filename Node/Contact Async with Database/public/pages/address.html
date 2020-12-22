@@ -1,0 +1,40 @@
+<div>
+  <p class="lead text-center">Address</p>
+  <div class="form-group row">
+    <div class="col">
+      <label>Room No</label>
+      <input
+        type="text"
+        class="form-control"
+        ng-model="contact.address.roomNo"
+      />
+    </div>
+
+    <div class="col">
+      <label>Building</label>
+      <input
+        type="text"
+        class="form-control"
+        ng-model="contact.address.building"
+      />
+    </div>
+    <div class="col">
+      <label>City</label>
+      <input type="text" class="form-control" ng-model="contact.address.city" />
+    </div>
+    <div class="col">
+      <label>State</label>
+      <select class="form-control" ng-model="contact.address.state">
+        <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
+      </select>
+    </div>
+    <div class="col">
+      <label>Street</label>
+      <input
+        type="text"
+        class="form-control"
+        ng-model="contact.address.street"
+      />
+    </div>
+  </div>
+</div>
