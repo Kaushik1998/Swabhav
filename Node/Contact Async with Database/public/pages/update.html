@@ -63,7 +63,7 @@
         </div>
         <div class="col">
           <label>State</label>
-          <select class="form-control" ng-model="contact.address.state">
+          <select class="form-control" ng-model="contact.address[0].state">
             <option ng-repeat="state in states" value="{{state}}">
               {{state}}
             </option>

@@ -11,13 +11,17 @@ module.exports = class Mongoose {
     return contact.save();
   };
 
-  async getContacts() {
+  getContacts = async () => {
     return await Contact.find({}, "-address._id");
-  }
+  };
 
-  async searchContact(getContact) {
+  searchContact = async (getContact) => {
     return await Contact.find(getContact);
-  }
+  };
+
+  updateContact = async (contactId, contactUpdate) => {
+    return await Contact.findByIdAndUpdate(contactId, contactUpdate);
+  };
   startConnection = () => {
     mongoose.connect(
       url,

@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <script src="test.js"></script>
-</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body ng-app="myApp">
+
+    <w3-test-directive></w3-test-directive>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.directive("w3TestDirective", function () {
+            return {
+                template: "<h1>Made by a directive!</h1>"
+            };
+        });
+    </script>
+
 </html>

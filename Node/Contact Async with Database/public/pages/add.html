@@ -1,39 +1,12 @@
-<w3-test-directive></w3-test-directive>
-
 <h2 class="text-center">Add Contact</h2>
 <hr />
 <div ng-if="newContactId">
   <h3 class="text-center">New Contact ID : {{newContactId}}</h3>
   <hr />
 </div>
-
 <div class="container">
   <form>
-    <div>
-      <p class="lead text-center">Personal Details</p>
-      <div class="form-row">
-        <div class="form-group col">
-          <label>First Name</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.name.firstName"
-          />
-        </div>
-        <div class="form-group col">
-          <label>Last Name</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.name.lastName"
-          />
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Contact</label>
-        <input type="text" class="form-control" ng-model="contact.contact" />
-      </div>
-    </div>
+    <contact-form contact="contact"></contact-form>
     <button
       type="submit"
       class="btn btn-dark btn-lg btn-block"

@@ -3,24 +3,38 @@ let Contact = require("./contactSchema");
 
 let kaushik = new Contact({
   name: {
-    firstName: "Kaushik",
+    firstName: "Ksn",
   },
   address: {
-    city: "Mumbai",
+    city: "Karnataka",
     state: "Maharastra",
   },
 });
 
 let m = new Mongo();
 
-m.addContact({
+m.updateContact("5fe3660feb9788261832c75c", 
+{
   name: {
-    firstName: "Kaushik",
+    firstName: "Night",
   },
   address: {
-    city: "Mumbai",
-    state: "Maharastra",
+    city: "Goa",
+    state: "Goa",
   },
-})
+}
+)
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
+
+// m.addContact({
+//   name: {
+//     firstName: "Kaushik",
+//   },
+//   address: {
+//     city: "Mumbai",
+//     state: "Maharastra",
+//   },
+// })
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));

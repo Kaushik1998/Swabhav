@@ -19,6 +19,7 @@ app.get("/api/contacts", controller.getContacts);
 // app.get("/api/contacts/:id", controller.getContactById);
 // app.get("/api/clear", controller.clearTable);
 app.post("/api/contacts", controller.addContact);
+app.put("/api/contacts", controller.updateContact);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/`);

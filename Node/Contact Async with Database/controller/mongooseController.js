@@ -32,4 +32,15 @@ module.exports = class Controller {
         res.status(404).send(err);
       });
   };
+
+  updateContact = (req, res, next) => {
+    this.db
+      .updateContact(req.body.id, req.body.contact)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  };
 };

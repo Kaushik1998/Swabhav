@@ -19,6 +19,10 @@ root.config([
         templateUrl: "./pages/update.html",
         controller: "updateCtrl",
       })
+      .when("/test", {
+        templateUrl: "./pages/test.html",
+        controller: "testCtrl",
+      })
       .otherwise({
         templateUrl: "./pages/page-not-found.html",
       });
@@ -29,28 +33,57 @@ root.service("contactService", [
   "$q",
   "$http",
   function (q, http) {
-    return {
-      getContacts: function () {
-        return http.get("/api/contacts").then(
-          function (response) {
-            return response;
-          },
-          function (response) {
-            return q.reject(response);
-          }
-        );
+    let contactService = {};
+    contactService.dummyContact = {
+      name: {
+        firstName: "Kaushik",
+        lastName: "Nippanikar",
       },
-      addContact: function (contact) {
-        return http.post("/api/contacts", JSON.stringify(contact)).then(
-          function (response) {
-            return response;
-          },
-          function (response) {
-            return q.reject(response);
-          }
-        );
-      },
+      contact: 8779385779,
+      address: [
+        {
+          roomNo: 404,
+          street: "Road",
+          city: "Mumbai",
+          state: "Goa",
+          building: "Pushpak",
+        },
+      ],
     };
+
+    contactService.getContacts = function () {
+      return http.get("/api/contacts").then(
+        function (response) {
+          return response;
+        },
+        function (response) {
+          return q.reject(response);
+        }
+      );
+    };
+
+    contactService.addContact = function (contact) {
+      return http.post("/api/contacts", JSON.stringify(contact)).then(
+        function (response) {
+          return response;
+        },
+        function (response) {
+          return q.reject(response);
+        }
+      );
+    };
+
+    contactService.updateContact = function (contact) {
+      return http.put("/api/contacts", JSON.stringify(contact)).then(
+        function (response) {
+          return response;
+        },
+        function (response) {
+          return q.reject(response);
+        }
+      );
+    };
+    return contactService;
   },
 ]);
 
@@ -97,11 +130,15 @@ root.factory("stateService", function () {
   return stateObject;
 });
 
-root.directive("w3TestDirective", function () {
+root.directive("contactForm", function () {
   var directive = {};
   directive.restrict = "E";
-  directive.templateUrl = `public/pages/address.html `;
-
+  directive.scope = {
+    contact: "=",
+  };
+  directive.controller = "addressCtrl";
+  directive.controllerAs = "address";
+  directive.templateUrl = `./pages/contact-form.html`;
   return directive;
 });
 
@@ -109,15 +146,29 @@ root.controller("contactCtrl", [
   "$scope",
   "$rootScope",
   "contactService",
-  async (scope, root, cs) => {
+  async (scope, root, contactService) => {
     scope.storeContact = function (contact) {
-      root.storedContact = contact;
+      scope.updateContact = contact;
     };
     scope.$on("$viewContentLoaded", function () {
-      cs.getContacts().then((result) => {
+      contactService.getContacts().then((result) => {
         scope.contacts = result.data;
       });
     });
+
+    scope.getKeys = function (obj) {
+      return Object.keys(obj);
+    };
+
+    scope.putContact = function (contact) {
+      let id = contact._id;
+      delete contact._id;
+      delete contact.__v;
+      contactService.updateContact({ id, contact }).then((result) => {
+        // scope.newContactId = result.data["_id"];
+        console.log(result.data);
+      });
+    };
   },
 ]);
 
@@ -129,7 +180,6 @@ root.controller("updateCtrl", [
   async (scope, root, contactService, stateService) => {
     scope.states = stateService.states;
     scope.contact = root.storedContact;
-    console.log(root.storedContact);
   },
 ]);
 
@@ -139,25 +189,43 @@ root.controller("addCtrl", [
   "stateService",
   async (scope, contactService, stateService) => {
     scope.states = stateService.states;
-    scope.contact = {
-      name: {
-        firstName: "Kaushik",
-        lastName: "Nippanikar",
-      },
-      contact: 8779385779,
-      address: {
-        roomNo: 404,
-        street: "Road",
-        city: "Mumbai",
-        state: "Maharastra",
-        building: "Pushpak",
-      },
-    };
+    scope.contact = contactService.dummyContact;
     scope.postContact = function () {
       contactService.addContact(scope.contact).then((result) => {
-        console.log(scope.contact);
         scope.newContactId = result.data["_id"];
       });
     };
+  },
+]);
+
+root.controller("addressCtrl", [
+  "$scope",
+  "$rootScope",
+  "contactService",
+  "stateService",
+  async (scope, root, contactService, stateService) => {
+    scope.states = stateService.states;
+    scope.addAddress = function () {
+      let addressArray = scope.contact["address"];
+      console.log(addressArray[addressArray.length - 1]);
+      addressArray.push({
+        roomNo: null,
+        street: null,
+        city: null,
+        state: null,
+        building: null,
+      });
+    };
+  },
+]);
+
+root.controller("testCtrl", [
+  "$scope",
+  "$rootScope",
+  "contactService",
+  "stateService",
+  async (scope, root, contactService, stateService) => {
+    scope.states = stateService.states;
+    scope.contact = root.storedContact;
   },
 ]);

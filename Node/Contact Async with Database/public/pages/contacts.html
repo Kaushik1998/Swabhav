@@ -1,3 +1,4 @@
+
 <div class="container">
   <table class="table table-bordered">
     <thead>
@@ -16,18 +17,61 @@
       <td>{{contact['_id']}}</td>
       <td>{{contact['contact']}}</td>
       <td>
-        <address ng-repeat="address in contact['address'] track by $index">
-          Address {{$index + 1 }} :
-          <span ng-repeat="fields in address">[ {{fields}} ]</span>
+        <address
+          ng-repeat="address in contact['address'] track by $index"
+          ng-init="keys = getKeys(address)"
+        >
+          Address {{$index + 1 }} <br />
+          <span ng-repeat="fields in address track by $index">
+            [{{keys[$index]}}] : {{fields}}.
+          </span>
         </address>
       </td>
+
       <td>
-        <a href="#update">
-          <button class="btn-dark" ng-click="storeContact(contact)">
-            Update
-          </button></a
+        <button
+          class="btn-dark"
+          data-toggle="modal"
+          data-target="#updateModal"
+          ng-click="storeContact(contact)"
         >
+          Update
+        </button>
       </td>
     </tbody>
   </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Contact</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <contact-form contact="updateContact"></contact-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          ng-click="putContact(updateContact)"
+        >
+          Update Contact
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
