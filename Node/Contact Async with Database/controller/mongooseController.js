@@ -43,4 +43,15 @@ module.exports = class Controller {
         res.status(400).send(err);
       });
   };
+
+  deleteContact = (req, res, next) => {
+    this.db
+      .updateContact(req.body.id)
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  };
 };

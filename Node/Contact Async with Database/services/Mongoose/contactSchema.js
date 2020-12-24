@@ -21,7 +21,10 @@ const contactSchema = mongoose.Schema({
       roomNo: String,
     },
   ],
-  profilePicture: Buffer,
+  profilePicture: {
+    data: String,
+    contentType: String,
+  },
   contact: {
     type: Number,
     required: true,

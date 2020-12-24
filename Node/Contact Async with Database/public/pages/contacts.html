@@ -1,4 +1,7 @@
-
+<div ng-if="newContactId">
+  <h3 class="text-center">New Contact ID : {{newContactId}}</h3>
+  <hr />
+</div>
 <div class="container">
   <table class="table table-bordered">
     <thead>
@@ -9,11 +12,13 @@
         <th scope="col">Contact</th>
         <th scope="col">Address</th>
         <th scope="col">Update</th>
+        <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody ng-repeat="contact in contacts track by $index">
       <td>{{$index+1}}</td>
       <td>{{contact['name']['firstName']}} {{contact['name']['lastName']}}</td>
+      <!-- <td>{{contact['address']}}</td> -->
       <td>{{contact['_id']}}</td>
       <td>{{contact['contact']}}</td>
       <td>
@@ -36,6 +41,16 @@
           ng-click="storeContact(contact)"
         >
           Update
+        </button>
+      </td>
+
+      <td>
+        <button
+          class="btn-dark"
+          data-toggle="modal"
+          ng-click="deleteContact(contact['_id'])"
+        >
+          Delete
         </button>
       </td>
     </tbody>

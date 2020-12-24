@@ -1,3 +1,7 @@
+<div ng-if="modifiedContactId">
+  <h3 class="text-center">New Contact ID : {{modifiedContactId}}</h3>
+  <hr />
+</div>
 <div>
   <p class="h3 text-center">Personal Details</p>
   <div class="form-row">
@@ -26,7 +30,9 @@
 
 <div class="container text-center">
   <span class="h3">Address</span>
-  <p class="btn btn-dark" ng-click="addAddress()">+</p>
+  <p class="btn btn-dark" ng-click="addAddress()">
+    <i class="fas fa-plus-square"></i>
+  </p>
 </div>
 <div ng-repeat="address in contact['address']">
   <div class="form-group row">
@@ -44,18 +50,28 @@
       <input type="text" class="form-control" ng-model="address.city" />
     </div>
     <div class="col">
-      <label> State</label>
+      <label>State</label>
       <select class="form-control">
-        <option ng-if="address.state" value="{{address.state}}" selected>
-          Current State : {{address.state}}
+        <option ng-if="address.state" value="{{address.state}}">
+          {{address.state}} (Current)
         </option>
-        <option value="">No State</option>
-        <option ng-repeat="st in states" value="{{st}}">{{st}}</option>
+        <option value="" disabled>---------</option>
+        <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
       </select>
     </div>
     <div class="col">
       <label>Street</label>
       <input type="text" class="form-control" ng-model="address.street" />
+    </div>
+    <div class="col">
+      <label>Delete</label>
+      <!-- <input type="button" class="form-control" ng-model="address.street" /> -->
+      <button
+        class="btn btn-dark form-control"
+        ng-click="removeAddress(address)"
+      >
+        <i class="fas fa-trash-alt"></i>
+      </button>
     </div>
   </div>
 </div>

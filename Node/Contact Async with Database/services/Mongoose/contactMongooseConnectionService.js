@@ -22,6 +22,10 @@ module.exports = class Mongoose {
   updateContact = async (contactId, contactUpdate) => {
     return await Contact.findByIdAndUpdate(contactId, contactUpdate);
   };
+
+  deleteContact = async (contactId) => {
+    return await Contact.findByIdAndDelete(contactId);
+  };
   startConnection = () => {
     mongoose.connect(
       url,

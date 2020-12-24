@@ -20,6 +20,7 @@ app.get("/api/contacts", controller.getContacts);
 // app.get("/api/clear", controller.clearTable);
 app.post("/api/contacts", controller.addContact);
 app.put("/api/contacts", controller.updateContact);
+app.delete("/api/contacts", controller.deleteContact);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}/`);

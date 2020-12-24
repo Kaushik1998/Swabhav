@@ -1,5 +1,7 @@
 let Mongo = require("./contactMongooseConnectionService");
 let Contact = require("./contactSchema");
+let path = require("path");
+let fs = require("fs");
 
 let kaushik = new Contact({
   name: {
@@ -13,8 +15,13 @@ let kaushik = new Contact({
 
 let m = new Mongo();
 
-m.updateContact("5fe3660feb9788261832c75c", 
-{
+m.deleteContact({
+  _id: "5fe37a53eb9788261832c75e",
+})
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+m.updateContact("5fe3660feb9788261832c75c", {
   name: {
     firstName: "Night",
   },
@@ -22,10 +29,15 @@ m.updateContact("5fe3660feb9788261832c75c",
     city: "Goa",
     state: "Goa",
   },
-}
-)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
+  profilePicture: {
+    data: fs.readFileSync(
+      path.join(__dirname + "/uploads/" + req.file.filename)
+    ),
+    contentType: "image/png",
+  },
+});
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
 
 // m.addContact({
 //   name: {
