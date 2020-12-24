@@ -24,7 +24,7 @@ module.exports = class Controller {
 
   searchContact = (req, res, next) => {
     this.db
-      .searchContact(req.query)
+      .searchContact(req.body)
       .then((result) => {
         res.status(200).send(result);
       })

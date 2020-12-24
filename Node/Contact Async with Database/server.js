@@ -16,6 +16,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/api/contacts", controller.getContacts);
+app.get("/api/searchContacts", controller.searchContact);
 // app.get("/api/contacts/:id", controller.getContactById);
 // app.get("/api/clear", controller.clearTable);
 app.post("/api/contacts", controller.addContact);

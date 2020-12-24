@@ -19,6 +19,10 @@ root.config([
         templateUrl: "./pages/update.html",
         controller: "updateCtrl",
       })
+      .when("/search", {
+        templateUrl: "./pages/search.html",
+        controller: "searchCtrl",
+      })
       .when("/test", {
         templateUrl: "./pages/test.html",
         controller: "testCtrl",
@@ -88,6 +92,23 @@ root.service("contactService", [
         method: "DELETE",
         url: `/api/contacts`,
         data: contactID,
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then(
+        function (response) {
+          return response;
+        },
+        function (response) {
+          return q.reject(response);
+        }
+      );
+    };
+    contactService.searchContact = function (contact) {
+      return http({
+        method: "GET",
+        url: `/api/searchContacts`,
+        data: contact,
         headers: {
           "Content-type": "application/json",
         },
@@ -242,6 +263,24 @@ root.controller("addressCtrl", [
         city: null,
         state: "Assam",
         building: null,
+      });
+    };
+  },
+]);
+
+root.controller("searchCtrl", [
+  "$scope",
+  "$rootScope",
+  "contactService",
+  "stateService",
+  async (scope, root, contactService, stateService) => {
+    scope.getKeys = function (obj) {
+      return Object.keys(obj);
+    };
+    scope.searchContactFromApi = function () {
+      contactService.searchContact(scope.searchContact).then((result) => {
+        scope.results = result.data;
+        console.log(scope.results);
       });
     };
   },
