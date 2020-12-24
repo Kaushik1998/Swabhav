@@ -83,6 +83,16 @@ root.service("contactService", [
         }
       );
     };
+    contactService.deleteContact = function (contactID) {
+      return http.delete("/api/contacts", contactID).then(
+        function (response) {
+          return response;
+        },
+        function (response) {
+          return q.reject(response);
+        }
+      );
+    };
     return contactService;
   },
 ]);
@@ -165,7 +175,14 @@ root.controller("contactCtrl", [
       delete contact._id;
       delete contact.__v;
       contactService.updateContact({ id, contact }).then((result) => {
-        // scope.newContactId = result.data["_id"];
+        scope.newContactId = result.data["_id"];
+        console.log(result.data);
+      });
+    };
+    scope.deleteContact = function (_id) {
+      console.log({ _id });
+      contactService.deleteContact({ _id }).then((result) => {
+        scope.newContactId = result.data["_id"];
         console.log(result.data);
       });
     };
@@ -204,6 +221,9 @@ root.controller("addressCtrl", [
   "contactService",
   "stateService",
   async (scope, root, contactService, stateService) => {
+    scope.removeAddress = function (object) {
+      scope.contact.address.pop(object);
+    };
     scope.states = stateService.states;
     scope.addAddress = function () {
       let addressArray = scope.contact["address"];
@@ -212,7 +232,7 @@ root.controller("addressCtrl", [
         roomNo: null,
         street: null,
         city: null,
-        state: null,
+        state: "Assam",
         building: null,
       });
     };
