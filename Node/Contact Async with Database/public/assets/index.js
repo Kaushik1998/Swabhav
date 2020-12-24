@@ -84,7 +84,14 @@ root.service("contactService", [
       );
     };
     contactService.deleteContact = function (contactID) {
-      return http.delete("/api/contacts", contactID).then(
+      return http({
+        method: "DELETE",
+        url: `/api/contacts`,
+        data: contactID,
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then(
         function (response) {
           return response;
         },
@@ -171,20 +178,22 @@ root.controller("contactCtrl", [
     };
 
     scope.putContact = function (contact) {
-      let id = contact._id;
-      delete contact._id;
-      delete contact.__v;
-      contactService.updateContact({ id, contact }).then((result) => {
+      let newContact = Object.assign({}, contact);
+      let id = newContact._id;
+      delete newContact._id;
+      delete newContact.__v;
+      contactService.updateContact({ id, newContact }).then((result) => {
         scope.newContactId = result.data["_id"];
         console.log(result.data);
       });
     };
-    scope.deleteContact = function (_id) {
-      console.log({ _id });
-      contactService.deleteContact({ _id }).then((result) => {
-        scope.newContactId = result.data["_id"];
-        console.log(result.data);
-      });
+    scope.deleteContact = function (contact) {
+      contactService
+        .deleteContact({ _id: contact._id })
+        .then((result) => {
+          scope.newContactId = result.data["_id"];
+        })
+        .catch((err) => console.log("Error"));
     };
   },
 ]);
@@ -227,7 +236,6 @@ root.controller("addressCtrl", [
     scope.states = stateService.states;
     scope.addAddress = function () {
       let addressArray = scope.contact["address"];
-      console.log(addressArray[addressArray.length - 1]);
       addressArray.push({
         roomNo: null,
         street: null,

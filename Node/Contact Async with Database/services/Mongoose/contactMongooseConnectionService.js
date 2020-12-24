@@ -15,8 +15,8 @@ module.exports = class Mongoose {
     return await Contact.find({}, "-address._id");
   };
 
-  searchContact = async (getContact) => {
-    return await Contact.find(getContact);
+  searchContact = async (contact) => {
+    return await Contact.find(contact);
   };
 
   updateContact = async (contactId, contactUpdate) => {

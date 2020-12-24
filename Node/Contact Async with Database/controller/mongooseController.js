@@ -46,8 +46,9 @@ module.exports = class Controller {
 
   deleteContact = (req, res, next) => {
     this.db
-      .updateContact(req.body.id)
+      .deleteContact(req.body._id)
       .then((result) => {
+        console.log(result);
         res.status(200).send(result);
       })
       .catch((err) => {

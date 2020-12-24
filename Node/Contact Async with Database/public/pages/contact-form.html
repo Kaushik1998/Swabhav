@@ -52,7 +52,11 @@
     <div class="col">
       <label>State</label>
       <select class="form-control">
-        <option ng-if="address.state" value="{{address.state}}">
+        <option
+          ng-if="address.state"
+          value="{{address.state}}"
+          ng-model="address.state"
+        >
           {{address.state}} (Current)
         </option>
         <option value="" disabled>---------</option>
@@ -73,8 +77,5 @@
         <i class="fas fa-trash-alt"></i>
       </button>
     </div>
-  </div>
-  <div class="">
-    <button>Remove</button>
   </div>
 </div>
