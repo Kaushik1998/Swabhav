@@ -73,19 +73,29 @@
         </button>
       </div>
       <div class="modal-body">
-        <contact-form contact="updateContact"></contact-form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn btn-dark"
-          ng-click="putContact(updateContact)"
+        <form
+          action="/api/updateContact"
+          method="POST"
+          enctype="multipart/form-data"
         >
-          Update Contact
-        </button>
+          <input
+            name="_id"
+            type="hidden"
+            value="{{updateContact._id}}"
+            class="form-group col text-center"
+          />
+          <contact-form contact="updateContact"></contact-form>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <input type="submit" class="btn btn-dark" value="Update Contact" />
+          </div>
+        </form>
       </div>
     </div>
   </div>

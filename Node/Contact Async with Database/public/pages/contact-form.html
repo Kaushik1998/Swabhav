@@ -1,13 +1,10 @@
-<div ng-if="modifiedContactId">
-  <h3 class="text-center">New Contact ID : {{modifiedContactId}}</h3>
-  <hr />
-</div>
 <div>
   <p class="h3 text-center">Personal Details</p>
   <div class="form-row">
     <div class="form-group col">
       <label>First Name</label>
       <input
+        name="name[firstName]"
         type="text"
         class="form-control"
         ng-model="contact.name.firstName"
@@ -16,6 +13,7 @@
     <div class="form-group col">
       <label>Last Name</label>
       <input
+        name="name[lastName]"
         type="text"
         class="form-control"
         ng-model="contact.name.lastName"
@@ -24,58 +22,95 @@
   </div>
   <div class="form-group">
     <label>Contact</label>
-    <input type="number" class="form-control" ng-model="contact.contact" />
+    <input
+      name="contact"
+      type="number"
+      class="form-control"
+      ng-model="contact.contact"
+    />
   </div>
-</div>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">File Upload</label>
+    <input
+      name="file"
+      file-model="contact.file"
+      type="file"
+      class="form-control-file"
+      id="exampleFormControlFile1"
+    />
+  </div>
 
-<div class="container text-center">
-  <span class="h3">Address</span>
-  <p class="btn btn-dark" ng-click="addAddress()">
-    <i class="fas fa-plus-square"></i>
-  </p>
-</div>
-<div ng-repeat="address in contact['address']">
-  <div class="form-group row">
-    <div class="col">
-      <label>Room No</label>
-      <input type="text" class="form-control" ng-model="address.roomNo" />
-    </div>
+  <div class="container text-center">
+    <span class="h3">Address</span>
+    <p class="btn btn-dark" ng-click="addAddress()">
+      <i class="fas fa-plus-square"></i>
+    </p>
+  </div>
+  <div ng-repeat="address in contact['address'] track by $index">
+    <div class="form-group row">
+      <div class="col">
+        <label>Room No</label>
+        <input
+          name="address[{{$index}}][roomNo]"
+          type="text"
+          class="form-control"
+          ng-model="address.roomNo"
+        />
+      </div>
 
-    <div class="col">
-      <label>Building</label>
-      <input type="text" class="form-control" ng-model="address.building" />
-    </div>
-    <div class="col">
-      <label>City</label>
-      <input type="text" class="form-control" ng-model="address.city" />
-    </div>
-    <div class="col">
-      <label>State</label>
-      <select class="form-control">
-        <option
-          ng-if="address.state"
-          value="{{address.state}}"
-          ng-model="address.state"
+      <div class="col">
+        <label>Building</label>
+        <input
+          name="address[{{$index}}][building]"
+          type="text"
+          class="form-control"
+          ng-model="address.building"
+        />
+      </div>
+      <div class="col">
+        <label>City</label>
+        <input
+          name="address[{{$index}}][city]"
+          type="text"
+          class="form-control"
+          ng-model="address.city"
+        />
+      </div>
+      <div class="col">
+        <label>State</label>
+        <select name="address[{{$index}}][state]" class="form-control">
+          <option
+            ng-if="address.state"
+            value="{{address.state}}"
+            ng-model="address.state"
+          >
+            {{address.state}} (Current)
+          </option>
+          <option value="" disabled>---------</option>
+          <option ng-repeat="state in states" value="{{state}}">
+            {{state}}
+          </option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Street</label>
+        <input
+          name="address[{{$index}}][street]"
+          type="text"
+          class="form-control"
+          ng-model="address.street"
+        />
+      </div>
+      <div class="col">
+        <label>Delete</label>
+        <!-- <input type="button" class="form-control" ng-model="address.street" /> -->
+        <button
+          class="btn btn-dark form-control"
+          ng-click="removeAddress(address)"
         >
-          {{address.state}} (Current)
-        </option>
-        <option value="" disabled>---------</option>
-        <option ng-repeat="state in states" value="{{state}}">{{state}}</option>
-      </select>
-    </div>
-    <div class="col">
-      <label>Street</label>
-      <input type="text" class="form-control" ng-model="address.street" />
-    </div>
-    <div class="col">
-      <label>Delete</label>
-      <!-- <input type="button" class="form-control" ng-model="address.street" /> -->
-      <button
-        class="btn btn-dark form-control"
-        ng-click="removeAddress(address)"
-      >
-        <i class="fas fa-trash-alt"></i>
-      </button>
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
     </div>
   </div>
 </div>

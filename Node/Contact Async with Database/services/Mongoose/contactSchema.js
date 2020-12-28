@@ -22,9 +22,10 @@ const contactSchema = mongoose.Schema({
     },
   ],
   profilePicture: {
-    data: String,
+    data: Buffer,
     contentType: String,
   },
+  img: Buffer,
   contact: {
     type: Number,
     required: true,

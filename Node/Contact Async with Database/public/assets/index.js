@@ -33,6 +33,49 @@ root.config([
   },
 ]);
 
+root.factory("stateService", function () {
+  let stateObject = {};
+  stateObject.states = [
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jammu and Kashmir",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttarakhand",
+    "Uttar Pradesh",
+    "West Bengal",
+    "Andaman and Nicobar Islands",
+    "Chandigarh",
+    "Dadra and Nagar Haveli",
+    "Daman and Diu",
+    "Delhi",
+    "Lakshadweep",
+    "Puducherry",
+  ];
+  return stateObject;
+});
+
 root.service("contactService", [
   "$q",
   "$http",
@@ -78,8 +121,10 @@ root.service("contactService", [
     };
 
     contactService.updateContact = function (contact) {
+      console.log("sent data", contact);
       return http.put("/api/contacts", JSON.stringify(contact)).then(
         function (response) {
+          console.log("response ", response.data);
           return response;
         },
         function (response) {
@@ -125,49 +170,6 @@ root.service("contactService", [
   },
 ]);
 
-root.factory("stateService", function () {
-  let stateObject = {};
-  stateObject.states = [
-    "Andhra Pradesh",
-    "Arunachal Pradesh",
-    "Assam",
-    "Bihar",
-    "Chhattisgarh",
-    "Goa",
-    "Gujarat",
-    "Haryana",
-    "Himachal Pradesh",
-    "Jammu and Kashmir",
-    "Jharkhand",
-    "Karnataka",
-    "Kerala",
-    "Madhya Pradesh",
-    "Maharashtra",
-    "Manipur",
-    "Meghalaya",
-    "Mizoram",
-    "Nagaland",
-    "Odisha",
-    "Punjab",
-    "Rajasthan",
-    "Sikkim",
-    "Tamil Nadu",
-    "Telangana",
-    "Tripura",
-    "Uttarakhand",
-    "Uttar Pradesh",
-    "West Bengal",
-    "Andaman and Nicobar Islands",
-    "Chandigarh",
-    "Dadra and Nagar Haveli",
-    "Daman and Diu",
-    "Delhi",
-    "Lakshadweep",
-    "Puducherry",
-  ];
-  return stateObject;
-});
-
 root.directive("contactForm", function () {
   var directive = {};
   directive.restrict = "E";
@@ -175,10 +177,27 @@ root.directive("contactForm", function () {
     contact: "=",
   };
   directive.controller = "addressCtrl";
-  directive.controllerAs = "address";
   directive.templateUrl = `./pages/contact-form.html`;
   return directive;
 });
+
+root.directive("fileModel", [
+  "$parse",
+  function ($parse) {
+    return {
+      restrict: "A",
+      link: function (scope, element, attrs) {
+        var model = $parse(attrs.fileModel);
+        var modelSetter = model.assign;
+        element.bind("change", function () {
+          scope.$apply(function () {
+            modelSetter(scope, element[0].files[0]);
+          });
+        });
+      },
+    };
+  },
+]);
 
 root.controller("contactCtrl", [
   "$scope",
@@ -261,7 +280,7 @@ root.controller("addressCtrl", [
         roomNo: null,
         street: null,
         city: null,
-        state: "Assam",
+        state: null,
         building: null,
       });
     };
@@ -291,8 +310,14 @@ root.controller("testCtrl", [
   "$rootScope",
   "contactService",
   "stateService",
-  async (scope, root, contactService, stateService) => {
-    scope.states = stateService.states;
-    scope.contact = root.storedContact;
+  "fileUpload",
+  async (scope, root, contactService, stateService, fileUpload) => {
+    scope.uploadFile = function () {
+      var file = scope.myFile;
+      console.log("file is ");
+      console.dir(file);
+      var uploadUrl = "/image";
+      fileUpload.uploadFileToUrl(file, uploadUrl);
+    };
   },
 ]);

@@ -1,5 +1,6 @@
 let Database = require("../services/Mongoose/contactMongooseConnectionService");
 let Contact = require("../services/Mongoose/contactSchema");
+const fs = require("fs");
 module.exports = class Controller {
   constructor() {
     this.db = new Database();
@@ -33,14 +34,43 @@ module.exports = class Controller {
       });
   };
 
+  processUpdateContact = (req, res, next) => {
+    if (req.body) {
+      req._id = req.body._id;
+      delete req.body.id;
+      req.contact = req.body;
+    } else {
+      res.status(400).send("No Body of Contact");
+    }
+    next();
+  };
+
+  processUpdateImage = (req, res, next) => {
+    if (req.file) {
+      let img = fs.readFileSync(req.file.path);
+      let encode_image = img.toString("base64");
+      let finalImg = {
+        contentType: req.file.mimetype,
+        image: new Buffer.from(encode_image, "base64"),
+      };
+      req.contact.profilePicture = {
+        data: finalImg.image,
+        contentType: finalImg.contentType,
+      };
+    }
+    next();
+  };
+
   updateContact = (req, res, next) => {
     this.db
-      .updateContact(req.body.id, req.body.contact)
+      .updateContact(req._id, req.contact)
       .then((result) => {
-        res.status(200).send(result);
+        console.log("Controller result", result);
+        res.status(200).send(result).redirect("/#/contacts");
       })
       .catch((err) => {
-        res.status(400).send(err);
+        console.log("Controller Err", err);
+        res.redirect("/#/contacts").status(400).send(err);
       });
   };
 
