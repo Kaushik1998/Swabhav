@@ -46,18 +46,23 @@ module.exports = class Controller {
   };
 
   processUpdateImage = (req, res, next) => {
-    if (req.file) {
-      let img = fs.readFileSync(req.file.path);
-      let encode_image = img.toString("base64");
-      let finalImg = {
-        contentType: req.file.mimetype,
-        image: new Buffer.from(encode_image, "base64"),
-      };
-      req.contact.profilePicture = {
-        data: finalImg.image,
-        contentType: finalImg.contentType,
-      };
+    // if (req.file) {
+    //   let img = fs.readFileSync(req.file.path);
+    //   let encode_image = img.toString("base64");
+    //   let finalImg = {
+    //     contentType: req.file.mimetype,
+    //     image: new Buffer.from(encode_image, "base64"),
+    //   };
+    //   req.contact.profilePicture = {
+    //     data: finalImg.image,
+    //     contentType: finalImg.contentType,
+    //   };
+    // }
+    if (req.files) {
+      req.contact.profilePicture = req.files[0].buffer;
+      req.contact.contentType = req.files[0].mimetype;
     }
+    console.log("Buffer", req.contact.profilePicture);
     next();
   };
 
@@ -66,11 +71,11 @@ module.exports = class Controller {
       .updateContact(req._id, req.contact)
       .then((result) => {
         console.log("Controller result", result);
-        res.status(200).send(result).redirect("/#/contacts");
+        res.status(200).send(result);
       })
       .catch((err) => {
         console.log("Controller Err", err);
-        res.redirect("/#/contacts").status(400).send(err);
+        res.status(400).send(err);
       });
   };
 
