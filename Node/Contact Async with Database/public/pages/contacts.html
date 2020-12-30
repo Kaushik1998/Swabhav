@@ -1,5 +1,9 @@
-<div ng-if="newContactId">
-  <h3 class="text-center">New Contact ID : {{newContactId}}</h3>
+<div ng-if="updatedContactId">
+  <h3 class="text-center">Updated Contact ID : {{updatedContactId}}</h3>
+  <hr />
+</div>
+<div ng-if="deletedContactId">
+  <h3 class="text-center">Deleted Contact ID : {{deletedContactId}}</h3>
   <hr />
 </div>
 <div class="container">
@@ -7,6 +11,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Img</th>
         <th scope="col">Name</th>
         <th scope="col">ID</th>
         <th scope="col">Contact</th>
@@ -17,8 +22,14 @@
     </thead>
     <tbody ng-repeat="contact in contacts track by $index">
       <td>{{$index+1}}</td>
+      <td>
+        <img
+          style="width: 6rem; height: 6rem"
+          ng-src="{{contact.imageString}}"
+          alt="WRF"
+        />
+      </td>
       <td>{{contact['name']['firstName']}} {{contact['name']['lastName']}}</td>
-      <!-- <td>{{contact['address']}}</td> -->
       <td>{{contact['_id']}}</td>
       <td>{{contact['contact']}}</td>
       <td>
@@ -73,29 +84,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <form
-          action="/api/updateContact"
-          method="POST"
-          enctype="multipart/form-data"
-        >
-          <input
-            name="_id"
-            type="hidden"
-            value="{{updateContact._id}}"
-            class="form-group col text-center"
-          />
-          <contact-form contact="updateContact"></contact-form>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <input type="submit" class="btn btn-dark" value="Update Contact" />
-          </div>
-        </form>
+        <contact-form contact="updateContact"></contact-form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-dark" ng-click="updateNewContact()">
+          Update Contact
+        </button>
       </div>
     </div>
   </div>

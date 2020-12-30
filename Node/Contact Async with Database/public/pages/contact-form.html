@@ -78,7 +78,11 @@
       </div>
       <div class="col">
         <label>State</label>
-        <select name="address[{{$index}}][state]" class="form-control">
+        <select
+          name="address[{{$index}}][state]"
+          ng-model="address.state"
+          class="form-control"
+        >
           <option
             ng-if="address.state"
             value="{{address.state}}"
@@ -103,7 +107,6 @@
       </div>
       <div class="col">
         <label>Delete</label>
-        <!-- <input type="button" class="form-control" ng-model="address.street" /> -->
         <button
           class="btn btn-dark form-control"
           ng-click="removeAddress(address)"

@@ -5,21 +5,9 @@ const app = express();
 const port = 4000 || process.env.PORT;
 const multer = require("multer");
 
-// let storage = multer.diskStorage({
-//   destination: "./uploads/",
-
-//   filename: function (req, file, callback) {
-//     callback(
-//       null,
-//       file.originalname.replace(path.extname(file.originalname), "") +
-//         path.extname(file.originalname)
-//     );
-//   },
-// });
 let storage = multer.memoryStorage();
 let upload = multer({ storage });
 
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use("/", express.static(path.join(__dirname, "public")));
@@ -32,21 +20,23 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/api/contacts", controller.getContacts);
-app.get("/api/searchContacts", controller.searchContact);
-// app.post("/api/contacts", upload.single("file"), controller.addContact);
+app.post("/api/contacts/search", controller.searchContact);
+
 app.post(
-  "/api/updateContact",
+  "/api/contacts/add",
   upload.any(),
-  function (req, res, next) {
-    console.log("Req Body", req.body);
-    console.log("Req File", req.files);
-    next();
-  },
-  controller.processUpdateContact,
-  controller.processUpdateImage,
+  controller.parseContact,
+  controller.parseImage,
+  controller.addContact
+);
+app.post(
+  "/api/contacts/update",
+  upload.any(),
+  controller.parseContact,
+  controller.parseImage,
   controller.updateContact
 );
-app.put("/api/contacts", controller.updateContact);
+
 app.delete("/api/contacts", controller.deleteContact);
 
 app.listen(port, () => {

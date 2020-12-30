@@ -24,58 +24,15 @@ module.exports = class Controller {
   };
 
   searchContact = (req, res, next) => {
+    console.log("searchContact Req Body", req.body);
     this.db
       .searchContact(req.body)
       .then((result) => {
+        console.log(result);
         res.status(200).send(result);
       })
       .catch((err) => {
         res.status(404).send(err);
-      });
-  };
-
-  processUpdateContact = (req, res, next) => {
-    if (req.body) {
-      req._id = req.body._id;
-      delete req.body.id;
-      req.contact = req.body;
-    } else {
-      res.status(400).send("No Body of Contact");
-    }
-    next();
-  };
-
-  processUpdateImage = (req, res, next) => {
-    // if (req.file) {
-    //   let img = fs.readFileSync(req.file.path);
-    //   let encode_image = img.toString("base64");
-    //   let finalImg = {
-    //     contentType: req.file.mimetype,
-    //     image: new Buffer.from(encode_image, "base64"),
-    //   };
-    //   req.contact.profilePicture = {
-    //     data: finalImg.image,
-    //     contentType: finalImg.contentType,
-    //   };
-    // }
-    if (req.files) {
-      req.contact.profilePicture = req.files[0].buffer;
-      req.contact.contentType = req.files[0].mimetype;
-    }
-    console.log("Buffer", req.contact.profilePicture);
-    next();
-  };
-
-  updateContact = (req, res, next) => {
-    this.db
-      .updateContact(req._id, req.contact)
-      .then((result) => {
-        console.log("Controller result", result);
-        res.status(200).send(result);
-      })
-      .catch((err) => {
-        console.log("Controller Err", err);
-        res.status(400).send(err);
       });
   };
 
@@ -87,6 +44,41 @@ module.exports = class Controller {
         res.status(200).send(result);
       })
       .catch((err) => {
+        res.status(400).send(err);
+      });
+  };
+
+  parseContact = (req, res, next) => {
+    for (let property in req.body) {
+      req.body[property] = JSON.parse(req.body[property]);
+    }
+    // console.log(" processUpdateContact Parsed Data", req.body);
+    next();
+  };
+
+  parseImage = (req, res, next) => {
+    if (req.files[0]) {
+      req.body.profilePicture = {
+        data: req.files[0].buffer,
+        contentType: req.files[0].mimetype,
+      };
+    }
+    console.log("parsed Req Body Pic", req.body.profilePicture);
+    next();
+  };
+
+  updateContact = (req, res, next) => {
+    let id = req.body._id;
+    delete req.body._id;
+    console.log("Final Req Body", req.body);
+    this.db
+      .updateContact(id, req.body)
+      .then((result) => {
+        console.log("Final result", result);
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log("In Controller updateContact Error", err);
         res.status(400).send(err);
       });
   };

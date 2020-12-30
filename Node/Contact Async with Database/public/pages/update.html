@@ -1,85 +1,22 @@
-<h2 class="text-center">Update Contact</h2>
-<hr />
-<div ng-if="newContactId">
-  <h3 class="text-center"> Contact with ID updated : {{newContactId}}</h3>
+<div ng-if="updatedContactId">
+  <h3 class="text-center">Updated Contact ID : {{updatedContactId}}</h3>
   <hr />
 </div>
+<h2 class="text-center">Update Contact</h2>
+<hr />
 
 <div class="container">
   <form>
-    <div>
-      <p class="lead text-center">Personal Details</p>
-      <div class="form-row">
-        <div class="form-group col">
-          <label>First Name</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.name.firstName"
-          />
-        </div>
-        <div class="form-group col">
-          <label>Last Name</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.name.lastName"
-          />
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Contact</label>
-        <input type="text" class="form-control" ng-model="contact.contact" />
-      </div>
+    <div class="form-group">
+      <label> Contact ID</label>
+      <input type="text" class="form-control" ng-model="contact._id" />
     </div>
-
-    <div>
-      <p class="lead text-center">Address</p>
-      <div class="form-group row">
-        <div class="col">
-          <label>Room No</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.address[0].roomNo"
-          />
-        </div>
-
-        <div class="col">
-          <label>Building</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.address[0].building"
-          />
-        </div>
-        <div class="col">
-          <label>City</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.address[0].city"
-          />
-        </div>
-        <div class="col">
-          <label>State</label>
-          <select class="form-control" ng-model="contact.address[0].state">
-            <option ng-repeat="state in states" value="{{state}}">
-              {{state}}
-            </option>
-          </select>
-        </div>
-        <div class="col">
-          <label>Street</label>
-          <input
-            type="text"
-            class="form-control"
-            ng-model="contact.address[0].street"
-          />
-        </div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-dark btn-lg btn-block" ng-click="">
+    <contact-form contact="contact"></contact-form>
+    <button
+      type="submit"
+      class="btn btn-dark btn-lg btn-block"
+      ng-click="updateContact()"
+    >
       Submit
     </button>
   </form>

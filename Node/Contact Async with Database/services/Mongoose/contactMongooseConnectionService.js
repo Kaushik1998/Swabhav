@@ -20,7 +20,7 @@ module.exports = class Mongoose {
   };
 
   updateContact = async (contactId, contactUpdate) => {
-    return await Contact.findOneAndUpdate(contactId, contactUpdate);
+    return await Contact.findByIdAndUpdate(contactId, contactUpdate);
   };
 
   deleteContact = async (contactId) => {
