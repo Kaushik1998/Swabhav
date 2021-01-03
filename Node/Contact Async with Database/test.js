@@ -24,4 +24,4 @@ let c = test().then((res) => {
   return res;
 });
 
-console.log(c);
+console.log(typeof JSON.parse("8779395779"));

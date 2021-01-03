@@ -3,7 +3,8 @@ const root = angular.module("root", ["ngRoute"]);
 root.config([
   "$routeProvider",
   "$compileProvider",
-  function (route, $compileProvider) {
+  "$locationProvider",
+  function (route, compileProvider, location) {
     route
       .when("/", {
         templateUrl: "./pages/landing.html",
@@ -32,7 +33,11 @@ root.config([
         templateUrl: "./pages/page-not-found.html",
       });
 
-    $compileProvider.imgSrcSanitizationWhitelist(/blob:/);
+    compileProvider.imgSrcSanitizationWhitelist(/blob:/);
+    location.html5Mode({
+      enabled: true,
+      requireBase: false,
+    });
   },
 ]);
 
