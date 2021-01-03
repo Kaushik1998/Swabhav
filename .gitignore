@@ -122,6 +122,7 @@ $RECYCLE.BIN/
 
 #Node
 Node/node_modules
+Node/Contact Async with Database/node_modules/
 
 # Windows shortcuts
 *.lnk
