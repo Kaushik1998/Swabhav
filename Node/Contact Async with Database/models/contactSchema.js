@@ -25,7 +25,7 @@ const contactSchema = mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  img: Buffer,
+
   contact: {
     type: Number,
     required: true,

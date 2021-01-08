@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Contact = require("./contactSchema");
+const Contact = require("../../models/contactSchema");
 const url = `mongodb+srv://root:root@cluster0.iyeol.mongodb.net/ContactDb?retryWrites=true&w=majority`;
 
 module.exports = class Mongoose {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="root">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,38 +15,22 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">Kaushik</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#myNavbar"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse myDirection" id="myNavbar">
-          <div class="navbar-nav text-center">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="contacts">Contacts</a>
-            <a class="nav-link" href="add">Add</a>
-            <a class="nav-link" href="update">Update</a>
-            <a class="nav-link" href="search">Search</a>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <section>
-      <hr />
-      <div ng-view></div>
-    </section>
-
-    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28//angular-route.min.js"></script>
-    <script src="assets/index.js"></script>
+    <div class="jumbotron">
+      <h1 class="display-4">Homepage</h1>
+      <p class="lead">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
+        repudiandae quod culpa illum ab. Harum!
+      </p>
+      <hr class="my-4" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste sequi
+        dolor accusamus, culpa tempore quae maiores vel quidem. Aut,
+        praesentium!
+      </p>
+      <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+      <a class="btn btn-primary btn-lg" href="/register" role="button"
+        >Register</a
+      >
+    </div>
   </body>
 </html>

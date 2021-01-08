@@ -1,5 +1,5 @@
-let Database = require("../services/Mongoose/contactMongooseConnectionService");
-let Contact = require("../services/Mongoose/contactSchema");
+let Database = require("../services/Mongoose/contactDatabaseConnectionService");
+let Contact = require("../models/contactSchema");
 const fs = require("fs");
 module.exports = class Controller {
   constructor() {

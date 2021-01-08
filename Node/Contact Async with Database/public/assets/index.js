@@ -34,10 +34,10 @@ root.config([
       });
 
     compileProvider.imgSrcSanitizationWhitelist(/blob:/);
-    location.html5Mode({
-      enabled: true,
-      requireBase: false,
-    });
+    // location.html5Mode({
+    //   enabled: true,
+    //   requireBase: false,
+    // });
   },
 ]);
 
